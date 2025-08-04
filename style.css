@@ -1,0 +1,78 @@
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f7f4fc;
+  color: #333;
+}
+header {
+  background-color: #6c3eb8;
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+}
+header h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+header p {
+  font-size: 1.2em;
+}
+.btn {
+  background: #ffffff;
+  color: #6c3eb8;
+  padding: 12px 24px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 8px;
+  display: inline-block;
+  margin-top: 20px;
+}
+section {
+  padding: 60px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+h2 {
+  color: #6c3eb8;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+.features, .segments {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.feature, .segment {
+  flex: 1 1 250px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px #ddd;
+}
+footer {
+  background-color: #eee;
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 0.9em;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 400px;
+  margin: 20px auto;
+}
+form input, form select, form button {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1em;
+}
+form button {
+  background-color: #6c3eb8;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
