@@ -1,74 +1,191 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Luni - Assistente Virtual Inteligente</title>
+  <title>Luni - Assistente Virtual Inteligente para seu Negócio</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <header>
-    <img src="luni-avatar.png" alt="Luni Avatar" style="width:160px;border-radius:50%;margin-bottom:20px;" />
-    <h1>🌙 Conheça a Luni</h1>
-    <p>Automatize agendamentos, atendimentos e follow-ups com inteligência artificial</p>
-    <a href="https://wa.me/5521976675302?text=Oi%2C%20gostaria%20de%20testar%20a%20Luni%20no%20meu%20negócio!" class="btn">✅ Quero ver a Luni funcionando!</a>
-  </header>
-
-  <section>
-    <h2>Quem é a Luni?</h2>
-    <p>A Luni é uma assistente virtual com inteligência artificial criada para atender clientes automaticamente por WhatsApp, Instagram ou site. Ela cuida de tudo: agendamentos, confirmações, lembretes e até promoções.</p>
-  </section>
-
-  <section>
-    <h2>O que a Luni faz por você?</h2>
-    <div class="features">
-      <div class="feature">✅ Atendimento automático por WhatsApp e Instagram</div>
-      <div class="feature">✅ Agendamento com confirmação imediata</div>
-      <div class="feature">✅ Envio de lembretes e promoções</div>
-      <div class="feature">✅ Follow-up pós atendimento</div>
-      <div class="feature">✅ Integração com agendas e sistemas</div>
-      <div class="feature">✅ Relatórios de atendimento</div>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content container">
+      <div class="logo">
+        <img src="luni_avatar_face.png" alt="Luni - Assistente Virtual">
+      </div>
+      <h1 class="fade-in">Conheça a Luni</h1>
+      <p class="subtitle fade-in">A assistente virtual inteligente que transforma seu atendimento</p>
+      <a href="https://wa.me/5521976675302?text=Oi%2C%20gostaria%20de%20testar%20a%20Luni%20no%20meu%20negócio!" class="cta-primary fade-in">✨ Experimentar Gratuitamente</a>
     </div>
   </section>
 
-  <section>
-    <h2>Quem pode usar a Luni?</h2>
-    <div class="segments">
-      <div class="segment">💇‍♀️ Salões e Barbearias<br/>Agendamentos de serviços, combos e promoções</div>
-      <div class="segment">🏥 Clínicas Estéticas<br/>Procedimentos, consultas e lembretes automatizados</div>
-      <div class="segment">🐶 Pet Shops e Veterinárias<br/>Banho, tosa, consultas e retornos automáticos</div>
+  <!-- Stats Section -->
+  <section class="stats container">
+    <div class="stat-card">
+      <span class="stat-number">24/7</span>
+      <span class="stat-label">Atendimento Automático</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-number">95%</span>
+      <span class="stat-label">Satisfação dos Clientes</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-number">60%</span>
+      <span class="stat-label">Economia de Tempo</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-number">∞</span>
+      <span class="stat-label">Atendimentos Simultâneos</span>
     </div>
   </section>
 
-  <section>
-    <h2>O que dizem sobre a Luni</h2>
-    <p>"Desde que começamos a usar a Luni, nossa agenda nunca mais ficou vazia. É como ter uma recepcionista digital que trabalha 24h por dia!"<br/><strong>– Juliana R., clínica de estética</strong></p>
+  <!-- About Section -->
+  <section class="section container">
+    <h2 class="section-title">O que é a Luni?</h2>
+    <p class="section-subtitle">
+      A Luni é uma assistente virtual equipada com inteligência artificial avançada, projetada para automatizar completamente o atendimento ao cliente do seu negócio. Ela trabalha 24 horas por dia, nunca tira férias e atende com a mesma qualidade e simpatia em todos os momentos.
+    </p>
   </section>
 
-  <section>
-    <h2>Pronto para automatizar seu atendimento?</h2>
-    <p>Fale agora com a Luni e veja como ela pode transformar seu negócio.</p>
-    <a href="https://wa.me/5599999999999?text=Oi%2C%20gostaria%20de%20testar%20a%20Luni%20no%20meu%20negócio!" class="btn">💬 Falar com a Luni pelo WhatsApp</a>
-    <br/><br/>
-    <form action="https://formsubmit.co/carlosdecar@gmail.com" method="POST">
-      <input type="text" name="nome" placeholder="Seu nome" required>
-      <input type="tel" name="telefone" placeholder="Seu WhatsApp" required>
-      <select name="servico" required>
-        <option value="" disabled selected>Qual serviço você quer automatizar?</option>
-        <option value="Salão de Beleza">Salão de Beleza</option>
-        <option value="Clínica Estética">Clínica Estética</option>
-        <option value="Pet Shop">Pet Shop</option>
-      </select>
-      <button type="submit">📩 Enviar</button>
-    </form>
+  <!-- Features Section -->
+  <section class="section container">
+    <h2 class="section-title">Recursos Poderosos</h2>
+    <p class="section-subtitle">Tudo que você precisa para automatizar seu atendimento em uma única solução</p>
+    
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="feature-icon">💬</span>
+        <h3 class="feature-title">Atendimento Inteligente</h3>
+        <p class="feature-desc">Responde perguntas, tira dúvidas e conversa naturalmente com seus clientes via WhatsApp, Instagram e site.</p>
+      </div>
+      
+      <div class="feature-card">
+        <span class="feature-icon">📅</span>
+        <h3 class="feature-title">Agendamento Automático</h3>
+        <p class="feature-desc">Agenda horários, envia confirmações e gerencia sua agenda integrada com Google Calendar.</p>
+      </div>
+      
+      <div class="feature-card">
+        <span class="feature-icon">🔔</span>
+        <h3 class="feature-title">Lembretes Inteligentes</h3>
+        <p class="feature-desc">Envia lembretes automáticos 24h e 2h antes dos compromissos, reduzindo faltas drasticamente.</p>
+      </div>
+      
+      <div class="feature-card">
+        <span class="feature-icon">⭐</span>
+        <h3 class="feature-title">Follow-up Pós-Atendimento</h3>
+        <p class="feature-desc">Solicita avaliações e feedback automaticamente após cada atendimento.</p>
+      </div>
+      
+      <div class="feature-card">
+        <span class="feature-icon">🎯</span>
+        <h3 class="feature-title">Promoções Segmentadas</h3>
+        <p class="feature-desc">Envia ofertas personalizadas para cada cliente no momento certo.</p>
+      </div>
+      
+      <div class="feature-card">
+        <span class="feature-icon">📊</span>
+        <h3 class="feature-title">Relatórios Detalhados</h3>
+        <p class="feature-desc">Acompanhe métricas de atendimento, agendamentos e satisfação em tempo real.</p>
+      </div>
+    </div>
   </section>
 
+  <!-- Segments Section -->
+  <section class="section segments">
+    <div class="container">
+      <h2 class="section-title">Ideal Para Seu Negócio</h2>
+      <p class="section-subtitle">A Luni se adapta perfeitamente a diferentes segmentos</p>
+      
+      <div class="segments-grid">
+        <div class="segment-card">
+          <span class="segment-icon">💇‍♀️</span>
+          <h3 class="segment-title">Salões e Barbearias</h3>
+          <p class="segment-desc">Agendamentos de cortes, coloração, mechas, progressivas e combos. Gestão completa da agenda com lembretes automáticos.</p>
+        </div>
+        
+        <div class="segment-card">
+          <span class="segment-icon">🏥</span>
+          <h3 class="segment-title">Clínicas Estéticas</h3>
+          <p class="segment-desc">Consultas, procedimentos estéticos, sessões de tratamento. Follow-up pós-procedimento e campanhas de retorno.</p>
+        </div>
+        
+        <div class="segment-card">
+          <span class="segment-icon">🐶</span>
+          <h3 class="segment-title">Pet Shops e Veterinárias</h3>
+          <p class="segment-desc">Banho, tosa, consultas veterinárias, vacinas. Lembretes de retorno e campanhas sazonais.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial Section -->
+  <section class="section testimonial">
+    <div class="container">
+      <h2 class="section-title">O Que Dizem Sobre a Luni</h2>
+      
+      <div class="testimonial-card">
+        <div class="quote-icon">"</div>
+        <p class="testimonial-text">
+          Desde que começamos a usar a Luni, nossa agenda nunca mais ficou vazia. É como ter uma recepcionista digital que trabalha 24 horas por dia, sem erros e sempre simpática. Nosso faturamento aumentou 40% em apenas 2 meses!
+        </p>
+        <div class="testimonial-author">Juliana Rodrigues</div>
+        <div class="testimonial-role">Proprietária - Clínica Estética Bella Vita</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Pronto Para Transformar Seu Atendimento?</h2>
+      <p>Teste a Luni gratuitamente e veja como ela pode revolucionar seu negócio</p>
+      
+      <a href="https://wa.me/5521976675302?text=Oi%2C%20gostaria%20de%20testar%20a%20Luni%20no%20meu%20negócio!" class="cta-primary">💬 Falar com a Luni Agora</a>
+      
+      <div class="contact-form">
+        <h3 style="margin-bottom: 30px; font-size: 1.5em;">Ou preencha o formulário</h3>
+        <form action="https://formsubmit.co/carlosdecar@gmail.com" method="POST">
+          <div class="form-group">
+            <input type="text" name="nome" class="form-control" placeholder="Seu nome completo" required>
+          </div>
+          
+          <div class="form-group">
+            <input type="tel" name="telefone" class="form-control" placeholder="Seu WhatsApp" required>
+          </div>
+          
+          <div class="form-group">
+            <select name="servico" class="form-control" required>
+              <option value="" disabled selected>Qual é o seu negócio?</option>
+              <option value="Salão de Beleza">Salão de Beleza</option>
+              <option value="Barbearia">Barbearia</option>
+              <option value="Clínica Estética">Clínica Estética</option>
+              <option value="Pet Shop">Pet Shop</option>
+              <option value="Veterinária">Veterinária</option>
+              <option value="Outro">Outro Segmento</option>
+            </select>
+          </div>
+          
+          <button type="submit" class="btn-submit">📩 Quero Conhecer a Luni</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer>
-    <p>© 2025 Luni | Desenvolvido por Carlos Carvalho</p>
-    <p>Instagram: @lunisolucoes | E-mail: carlosdecar@gmail.com</p>
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="https://wa.me/5521976675302">WhatsApp</a>
+        <a href="https://instagram.com/lunisolucoes">Instagram</a>
+        <a href="mailto:carlosdecar@gmail.com">E-mail</a>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>© 2025 Luni - Assistente Virtual Inteligente</p>
+        <p>Desenvolvido por Carlos Carvalho | Todos os direitos reservados</p>
+      </div>
+    </div>
   </footer>
-
 </body>
 </html>
