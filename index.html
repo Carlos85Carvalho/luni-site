@@ -1,186 +1,285 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Luni - Excelência em Atendimento</title>
+/* --- CONFIGURAÇÕES DE LUXO --- */
+:root {
+  --gold: #C5A059;         /* Dourado elegante (não amarelado) */
+  --gold-dark: #A68545;
+  --black: #121212;        /* Preto profundo */
+  --dark-gray: #1F1F1F;
+  --gray: #666666;
+  --light-gray: #F5F5F5;   /* Off-white */
+  --white: #FFFFFF;
   
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  --font-serif: 'Playfair Display', serif; /* Fonte de Títulos */
+  --font-sans: 'Lato', sans-serif;        /* Fonte de Texto */
+}
 
-  <nav class="navbar container">
-    <div class="logo">
-      <span class="logo-text">Luni<span class="dot">.</span></span>
-    </div>
-    <div class="nav-links">
-      <a href="#diferenciais">Diferenciais</a>
-      <a href="#segmentos">Para Você</a>
-      <a href="https://wa.me/5521976675302" class="btn-nav">Fale Conosco</a>
-    </div>
-  </nav>
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-  <section class="hero">
-    <div class="hero-content container">
-      <p class="pre-title">INTELIGÊNCIA ARTIFICIAL EXCLUSIVA</p>
-      <h1 class="fade-in">Eleve o padrão do seu <br>atendimento.</h1>
-      <p class="subtitle fade-in">Uma recepcionista virtual sofisticada, disponível 24h para agendar, encantar e fidelizar seus clientes mais exigentes.</p>
-      
-      <div class="hero-buttons">
-        <a href="https://wa.me/5521976675302" class="cta-primary fade-in">
-          Iniciar Experiência
-        </a>
-        <a href="#diferenciais" class="cta-link fade-in">Conhecer Detalhes <i class="fa-solid fa-arrow-right"></i></a>
-      </div>
-    </div>
-  </section>
+body {
+  font-family: var(--font-sans);
+  color: var(--black);
+  background-color: var(--white);
+  line-height: 1.7;
+  font-weight: 300; /* Texto mais fino e elegante */
+}
 
-  <section class="stats container">
-    <div class="stat-item">
-      <span class="stat-number">24h</span>
-      <span class="stat-label">Disponibilidade</span>
-    </div>
-    <div class="stat-divider"></div>
-    <div class="stat-item">
-      <span class="stat-number">98%</span>
-      <span class="stat-label">Satisfação</span>
-    </div>
-    <div class="stat-divider"></div>
-    <div class="stat-item">
-      <span class="stat-number">Automático</span>
-      <span class="stat-label">Agendamento</span>
-    </div>
-  </section>
+a { text-decoration: none; color: inherit; transition: 0.3s; }
+ul { list-style: none; }
 
-  <section id="diferenciais" class="section bg-light">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">A excelência está nos detalhes</h2>
-        <div class="title-line"></div>
-      </div>
-      
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="icon-wrap"><i class="fa-brands fa-whatsapp"></i></div>
-          <h3>Comunicação Natural</h3>
-          <p>Sua assistente interpreta contextos e responde com a cordialidade que sua marca exige.</p>
-        </div>
-        
-        <div class="feature-card">
-          <div class="icon-wrap"><i class="fa-regular fa-calendar"></i></div>
-          <h3>Gestão de Agenda</h3>
-          <p>Integração total com Google Calendar para uma organização impecável de horários.</p>
-        </div>
-        
-        <div class="feature-card">
-          <div class="icon-wrap"><i class="fa-regular fa-gem"></i></div>
-          <h3>Experiência Premium</h3>
-          <p>Lembretes elegantes e follow-up automático para garantir o retorno do cliente.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
-  <section id="segmentos" class="section">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">Soluções para Negócios</h2>
-        <div class="title-line"></div>
-      </div>
-      
-      <div class="segments-grid">
-        <div class="segment-box">
-          <h3>Salões & Spas</h3>
-          <p>Agendamento de procedimentos e gestão de recorrência.</p>
-          <a href="#" class="details-link">Saiba mais</a>
-        </div>
-        
-        <div class="segment-box">
-          <h3>Clínicas de Estética</h3>
-          <p>Confirmação de consultas e orientações pré-procedimento.</p>
-          <a href="#" class="details-link">Saiba mais</a>
-        </div>
-        
-        <div class="segment-box">
-          <h3>Saúde & Bem-estar</h3>
-          <p>Atendimento humanizado para pacientes e clientes.</p>
-          <a href="#" class="details-link">Saiba mais</a>
-        </div>
-      </div>
-    </div>
-  </section>
+/* --- NAVBAR --- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 20px;
+}
 
-  <section class="testimonial">
-    <div class="container">
-      <div class="testimonial-content">
-        <i class="fa-solid fa-quote-left quote-mark"></i>
-        <p class="testimonial-text">
-          "A Luni trouxe uma organização que nunca tivemos. Nossos clientes se sentem acolhidos mesmo fora do horário comercial. É um investimento em qualidade."
-        </p>
-        <div class="author-block">
-          <strong>Juliana Rodrigues</strong>
-          <span>Diretora, Bella Vita Clinic</span>
-        </div>
-      </div>
-    </div>
-  </section>
+.logo-text {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+.logo-text .dot { color: var(--gold); }
 
-  <section class="cta-section bg-dark">
-    <div class="container cta-layout">
-      <div class="cta-info">
-        <h2>Solicite uma demonstração</h2>
-        <p>Descubra como a Luni pode transformar a gestão do seu tempo.</p>
-        <ul class="check-list">
-          <li><i class="fa-solid fa-check"></i> Teste gratuito sem compromisso</li>
-          <li><i class="fa-solid fa-check"></i> Configuração personalizada</li>
-          <li><i class="fa-solid fa-check"></i> Suporte especializado</li>
-        </ul>
-      </div>
-      
-      <div class="form-wrapper">
-        <form action="https://formsubmit.co/carlosdecar@gmail.com" method="POST">
-          <div class="input-group">
-            <input type="text" name="nome" required>
-            <label>Nome Completo</label>
-          </div>
-          
-          <div class="input-group">
-            <input type="tel" name="telefone" required>
-            <label>Telefone / WhatsApp</label>
-          </div>
-          
-          <div class="input-group select-group">
-            <select name="servico" required>
-              <option value="" disabled selected>Selecione seu segmento</option>
-              <option value="Salao">Beleza & Estética</option>
-              <option value="Saude">Saúde</option>
-              <option value="Outro">Outro</option>
-            </select>
-          </div>
-          
-          <button type="submit" class="btn-gold">Solicitar Acesso</button>
-        </form>
-      </div>
-    </div>
-  </section>
+.nav-links { display: flex; gap: 40px; align-items: center; }
+.nav-links a { 
+  font-size: 0.9rem; 
+  text-transform: uppercase; 
+  letter-spacing: 1px;
+  color: var(--black);
+  font-weight: 400;
+}
+.nav-links a:hover { color: var(--gold); }
 
-  <footer>
-    <div class="container">
-      <div class="footer-simple">
-        <span class="brand">Luni.</span>
-        <div class="social-links">
-          <a href="https://instagram.com/lunisolucoes">Instagram</a>
-          <a href="https://wa.me/5521976675302">WhatsApp</a>
-        </div>
-        <p class="copyright">© 2025 Luni Soluções Inteligentes. Todos os direitos reservados.</p>
-      </div>
-    </div>
-  </footer>
-</body>
-</html>
+.btn-nav {
+  border: 1px solid var(--black);
+  padding: 10px 25px;
+  transition: 0.4s;
+}
+.btn-nav:hover { background: var(--black); color: var(--white); }
+
+/* --- HERO SECTION --- */
+.hero {
+  padding: 120px 0 100px;
+  text-align: center;
+}
+
+.pre-title {
+  color: var(--gold);
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-family: var(--font-serif);
+  font-size: 3.8rem;
+  line-height: 1.1;
+  color: var(--black);
+  margin-bottom: 30px;
+  font-weight: 400; /* Título fino e grande */
+}
+
+.hero .subtitle {
+  color: var(--gray);
+  max-width: 600px;
+  margin: 0 auto 50px;
+  font-size: 1.1rem;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.cta-primary {
+  background-color: var(--black);
+  color: var(--white);
+  padding: 18px 40px;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: 0.4s;
+}
+.cta-primary:hover { background-color: var(--gold); color: var(--white); }
+
+.cta-link {
+  color: var(--black);
+  font-weight: 400;
+  border-bottom: 1px solid transparent;
+}
+.cta-link:hover { color: var(--gold); }
+
+/* --- STATS --- */
+.stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.stat-item { text-align: center; padding: 0 40px; }
+.stat-number { display: block; font-family: var(--font-serif); font-size: 2.5rem; color: var(--gold); }
+.stat-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--gray); }
+.stat-divider { width: 1px; height: 40px; background: #ddd; }
+
+/* --- SECTIONS --- */
+.section { padding: 100px 0; }
+.bg-light { background-color: var(--light-gray); }
+
+.section-header { text-align: center; margin-bottom: 70px; }
+.section-title {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+.title-line {
+  width: 60px;
+  height: 2px;
+  background-color: var(--gold);
+  margin: 0 auto;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+}
+
+.feature-card {
+  background: var(--white);
+  padding: 50px 30px;
+  border: 1px solid transparent;
+  transition: 0.4s;
+  text-align: center;
+}
+.feature-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-5px);
+}
+
+.icon-wrap { font-size: 2rem; color: var(--gold); margin-bottom: 25px; }
+.feature-card h3 { font-family: var(--font-serif); margin-bottom: 15px; font-weight: 400; font-size: 1.5rem; }
+.feature-card p { font-size: 0.95rem; color: var(--gray); }
+
+/* --- SEGMENTS --- */
+.segments-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.segment-box {
+  border: 1px solid #eee;
+  padding: 40px;
+  transition: 0.4s;
+}
+.segment-box:hover { border-color: var(--gold); background: #fafafa; }
+.segment-box h3 { font-family: var(--font-serif); margin-bottom: 10px; font-size: 1.4rem; }
+.segment-box p { color: var(--gray); margin-bottom: 20px; font-size: 0.9rem; }
+.details-link { font-size: 0.8rem; text-transform: uppercase; border-bottom: 1px solid var(--black); padding-bottom: 2px; }
+
+/* --- TESTIMONIAL --- */
+.testimonial { padding: 80px 0; background-color: var(--white); text-align: center; }
+.testimonial-content { max-width: 700px; margin: 0 auto; }
+.quote-mark { font-size: 2rem; color: var(--gold); margin-bottom: 30px; opacity: 0.5; }
+.testimonial-text {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  line-height: 1.4;
+  font-style: italic;
+  margin-bottom: 30px;
+  color: var(--dark-gray);
+}
+.author-block strong { display: block; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; }
+.author-block span { font-size: 0.85rem; color: var(--gray); }
+
+/* --- CTA DARK --- */
+.bg-dark { background-color: var(--black); color: var(--white); }
+.cta-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+
+.cta-info h2 { font-family: var(--font-serif); font-size: 2.5rem; margin-bottom: 20px; color: var(--white); }
+.cta-info p { color: #999; margin-bottom: 30px; }
+.check-list li { margin-bottom: 15px; display: flex; align-items: center; gap: 10px; color: #ccc; }
+.check-list i { color: var(--gold); }
+
+/* Form Minimalista */
+.form-wrapper { background: var(--dark-gray); padding: 50px; }
+.input-group { position: relative; margin-bottom: 30px; }
+
+.input-group input, .input-group select {
+  width: 100%;
+  padding: 10px 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #444;
+  color: var(--white);
+  font-size: 1rem;
+  outline: none;
+  font-family: var(--font-sans);
+}
+
+.input-group label {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  color: #666;
+  pointer-events: none;
+  transition: 0.3s;
+  font-size: 0.9rem;
+}
+
+/* Animação do Label */
+.input-group input:focus ~ label,
+.input-group input:valid ~ label {
+  top: -20px;
+  font-size: 0.75rem;
+  color: var(--gold);
+}
+.input-group input:focus,
+.input-group select:focus { border-bottom-color: var(--gold); }
+
+.btn-gold {
+  width: 100%;
+  background: var(--gold);
+  color: var(--white);
+  border: none;
+  padding: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: 700;
+  margin-top: 10px;
+}
+.btn-gold:hover { background: var(--gold-dark); }
+
+/* --- FOOTER --- */
+footer { padding: 60px 0; text-align: center; border-top: 1px solid #eee; margin-top: 50px; }
+.footer-simple .brand { font-family: var(--font-serif); font-weight: 700; font-size: 1.5rem; display: block; margin-bottom: 20px; }
+.social-links { margin-bottom: 30px; }
+.social-links a { margin: 0 15px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+.copyright { color: #999; font-size: 0.8rem; }
+
+/* --- RESPONSIVO --- */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 2.5rem; }
+  .cta-layout { grid-template-columns: 1fr; }
+  .stats { flex-direction: column; gap: 20px; }
+  .stat-divider { display: none; }
+  .navbar { flex-direction: column; gap: 20px; }
+  .nav-links { display: none; } /* Simplificado para mobile */
+}
+
+/* Animação suave */
+.fade-in { animation: fadeIn 1s ease-out; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
