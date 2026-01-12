@@ -212,13 +212,6 @@ body {
 .cta-container { max-width: 800px; margin: 0 auto; text-align: center; }
 .cta-card { background: white; padding: 60px; border-radius: var(--radius); box-shadow: var(--shadow-hover); }
 
-.price-badge {
-  display: inline-block; background: var(--accent); color: white;
-  padding: 8px 20px; border-radius: 50px; font-weight: 600;
-  margin: 20px 0; font-size: 1.1rem;
-}
-.price-note { color: var(--gray); font-size: 0.9rem; margin-top: 10px; }
-
 /* --- 9. FORMULÁRIO --- */
 .contact-form { background: white; padding: 40px; border-radius: var(--radius); box-shadow: var(--shadow-hover); margin-top: 40px; }
 .form-group { margin-bottom: 24px; }
