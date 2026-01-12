@@ -1,194 +1,384 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Luni - A Inteligência Artificial do seu Negócio</title>
+/* --- 1. RESET & VARIÁVEIS --- */
+:root {
+  /* Cores Modernas "Tech" */
+  --primary: #6366f1; /* Indigo */
+  --primary-dark: #4f46e5;
+  --secondary: #ec4899; /* Pink/Purple Gradient */
+  --dark: #1e293b;
+  --light: #f8fafc;
+  --gray: #64748b;
+  --white: #ffffff;
   
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  /* Gradientes */
+  --gradient-main: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+  --gradient-text: linear-gradient(to right, #6366f1, #ec4899);
   
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  /* Sombras Suaves */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  /* Fontes */
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
 
-  <nav class="navbar container">
-    <div class="logo">
-      <span class="logo-text">Luni<span class="dot">.</span>ai</span>
-    </div>
-    <div class="nav-links">
-      <a href="#recursos">Recursos</a>
-      <a href="#segmentos">Segmentos</a>
-      <a href="https://wa.me/5521976675302" class="btn-nav">Falar com Luni</a>
-    </div>
-  </nav>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  <section class="hero">
-    <div class="hero-bg-overlay"></div>
-    <div class="hero-content container">
-      <div class="badge-new">✨ Nova Tecnologia 2.0</div>
-      <h1 class="fade-in">O fim da <span class="text-gradient">agenda vazia</span> no seu negócio</h1>
-      <p class="subtitle fade-in">A Luni é a recepcionista virtual que atende, agende e fideliza clientes 24h por dia no WhatsApp.</p>
-      
-      <div class="hero-buttons">
-        <a href="https://wa.me/5521976675302?text=Oi%2C%20gostaria%20de%20testar%20a%20Luni" class="cta-primary fade-in">
-          <i class="fa-brands fa-whatsapp"></i> Testar Gratuitamente
-        </a>
-        <a href="#demo" class="cta-secondary fade-in">Ver como funciona</a>
-      </div>
-    </div>
-  </section>
+body {
+  font-family: var(--font-body);
+  color: var(--dark);
+  background-color: var(--white);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
 
-  <section class="stats container">
-    <div class="stat-card">
-      <div class="icon-stat"><i class="fa-solid fa-clock"></i></div>
-      <span class="stat-number">24/7</span>
-      <span class="stat-label">Atendimento</span>
-    </div>
-    <div class="stat-card">
-      <div class="icon-stat"><i class="fa-solid fa-heart"></i></div>
-      <span class="stat-number">95%</span>
-      <span class="stat-label">Satisfação</span>
-    </div>
-    <div class="stat-card">
-      <div class="icon-stat"><i class="fa-solid fa-bolt"></i></div>
-      <span class="stat-number">60%</span>
-      <span class="stat-label">Mais Produtividade</span>
-    </div>
-  </section>
+a { text-decoration: none; }
+ul { list-style: none; }
 
-  <section id="recursos" class="section container">
-    <div class="section-header">
-      <h2 class="section-title">Por que escolher a Luni?</h2>
-      <p class="section-subtitle">Automatize processos chatos e foque no que importa: seu cliente.</p>
-    </div>
-    
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="feature-icon-box"><i class="fa-brands fa-whatsapp"></i></div>
-        <h3 class="feature-title">Atendimento Humanizado</h3>
-        <p class="feature-desc">Ela entende áudios, gírias e contextos. Seu cliente nem vai perceber que é um robô.</p>
-      </div>
-      
-      <div class="feature-card">
-        <div class="feature-icon-box"><i class="fa-regular fa-calendar-check"></i></div>
-        <h3 class="feature-title">Agenda Integrada</h3>
-        <p class="feature-desc">Conectada ao Google Calendar. O cliente escolhe o horário e a Luni bloqueia a agenda na hora.</p>
-      </div>
-      
-      <div class="feature-card">
-        <div class="feature-icon-box"><i class="fa-regular fa-bell"></i></div>
-        <h3 class="feature-title">Zero Faltas</h3>
-        <p class="feature-desc">Lembretes automáticos enviados 24h e 2h antes. Reduza o "no-show" quase a zero.</p>
-      </div>
-      
-      <div class="feature-card">
-        <div class="feature-icon-box"><i class="fa-solid fa-star"></i></div>
-        <h3 class="feature-title">Pós-Venda Automático</h3>
-        <p class="feature-desc">A Luni pergunta como foi o serviço e pede avaliação no Google Meu Negócio.</p>
-      </div>
-    </div>
-  </section>
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
 
-  <section id="segmentos" class="section bg-light">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">Feito para o seu negócio</h2>
-      </div>
-      
-      <div class="segments-grid">
-        <div class="segment-card">
-          <i class="fa-solid fa-scissors segment-icon"></i>
-          <h3 class="segment-title">Beleza & Estética</h3>
-          <p class="segment-desc">Salões, Barbearias, Esmalterias e Clínicas de Estética.</p>
-        </div>
-        
-        <div class="segment-card">
-          <i class="fa-solid fa-user-doctor segment-icon"></i>
-          <h3 class="segment-title">Saúde</h3>
-          <p class="segment-desc">Consultórios Médicos, Odontológicos e Terapeutas.</p>
-        </div>
-        
-        <div class="segment-card">
-          <i class="fa-solid fa-paw segment-icon"></i>
-          <h3 class="segment-title">Pet</h3>
-          <p class="segment-desc">Pet Shops, Banho e Tosa e Veterinárias.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+/* --- 2. NAVBAR --- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px;
+  position: absolute; /* Navbar transparente sobre o hero */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
 
-  <section class="section testimonial container">
-    <div class="testimonial-box">
-      <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
-      <p class="testimonial-text">
-        "O faturamento da clínica aumentou 40% em dois meses. A Luni não dorme, não fica doente e atende todo mundo com a mesma simpatia."
-      </p>
-      <div class="testimonial-author">
-        <strong>Juliana Rodrigues</strong>
-        <span>Proprietária da Bella Vita</span>
-      </div>
-    </div>
-  </section>
+.logo-text {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--dark);
+}
 
-  <section class="cta-section">
-    <div class="container cta-container">
-      <div class="cta-text">
-        <h2>Pronto para modernizar?</h2>
-        <p>Teste a Luni gratuitamente agora mesmo.</p>
-        <a href="https://wa.me/5521976675302" class="cta-primary big-btn">
-          <i class="fa-brands fa-whatsapp"></i> Chamar no Zap
-        </a>
-      </div>
-      
-      <div class="contact-form-wrapper">
-        <h3>Receba uma proposta</h3>
-        <form action="https://formsubmit.co/carlosdecar@gmail.com" method="POST">
-          <div class="form-group">
-            <label>Seu Nome</label>
-            <input type="text" name="nome" placeholder="Ex: Carlos" required>
-          </div>
-          
-          <div class="form-group">
-            <label>WhatsApp</label>
-            <input type="tel" name="telefone" placeholder="(DD) 99999-9999" required>
-          </div>
-          
-          <div class="form-group">
-            <label>Segmento</label>
-            <select name="servico" required>
-              <option value="" disabled selected>Selecione...</option>
-              <option value="Salao">Salão/Barbearia</option>
-              <option value="Clinica">Clínica</option>
-              <option value="Pet">Pet Shop</option>
-              <option value="Outro">Outro</option>
-            </select>
-          </div>
-          
-          <button type="submit" class="btn-submit">Enviar Cadastro</button>
-        </form>
-      </div>
-    </div>
-  </section>
+.logo-text .dot { color: var(--primary); }
 
-  <footer>
-    <div class="container footer-content">
-      <div class="brand">
-        <h4>Luni.ai</h4>
-        <p>Automação inteligente para negócios reais.</p>
-      </div>
-      <div class="socials">
-        <a href="#"><i class="fa-brands fa-instagram"></i></a>
-        <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
-        <a href="#"><i class="fa-regular fa-envelope"></i></a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2025 Luni Soluções Inteligentes.</p>
-    </div>
-  </footer>
-</body>
-</html>
+.nav-links { display: flex; gap: 30px; align-items: center; }
+.nav-links a { color: var(--gray); font-weight: 500; transition: 0.3s; }
+.nav-links a:hover { color: var(--primary); }
+
+.btn-nav {
+  padding: 10px 24px;
+  border: 2px solid var(--primary);
+  border-radius: 50px;
+  color: var(--primary) !important;
+  font-weight: 600;
+}
+
+.btn-nav:hover {
+  background: var(--primary);
+  color: white !important;
+}
+
+/* --- 3. HERO SECTION --- */
+.hero {
+  padding: 160px 0 100px;
+  text-align: center;
+  background: radial-gradient(circle at 50% 10%, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
+  position: relative;
+}
+
+.badge-new {
+  display: inline-block;
+  background: rgba(99, 102, 241, 0.1);
+  color: var(--primary);
+  padding: 6px 16px;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  color: var(--dark);
+  font-weight: 700;
+}
+
+.text-gradient {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero .subtitle {
+  font-size: 1.25rem;
+  color: var(--gray);
+  max-width: 700px;
+  margin: 0 auto 40px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-primary {
+  background: var(--gradient-main);
+  color: white;
+  padding: 16px 32px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+.cta-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
+}
+
+.cta-secondary {
+  background: white;
+  color: var(--dark);
+  padding: 16px 32px;
+  border-radius: 50px;
+  font-weight: 600;
+  border: 1px solid #e2e8f0;
+  transition: 0.3s;
+}
+
+.cta-secondary:hover { border-color: var(--primary); color: var(--primary); }
+
+/* --- 4. STATS --- */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  margin-top: -40px;
+  margin-bottom: 80px;
+  position: relative;
+  z-index: 10;
+}
+
+.stat-card {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(0,0,0,0.03);
+  transition: 0.3s;
+}
+
+.stat-card:hover { transform: translateY(-5px); }
+
+.icon-stat {
+  font-size: 1.5rem;
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+
+.stat-number {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  color: var(--dark);
+}
+
+.stat-label {
+  color: var(--gray);
+  font-size: 0.95rem;
+}
+
+/* --- 5. FEATURES & SECTIONS --- */
+.section { padding: 80px 0; }
+.bg-light { background-color: #f8fafc; }
+
+.section-header { text-align: center; margin-bottom: 60px; }
+.section-title { font-family: var(--font-heading); font-size: 2.5rem; color: var(--dark); margin-bottom: 15px; }
+.section-subtitle { font-size: 1.1rem; color: var(--gray); max-width: 600px; margin: 0 auto; }
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.feature-card {
+  padding: 30px;
+  border-radius: 20px;
+  background: white;
+  border: 1px solid #f1f5f9;
+  transition: 0.3s;
+}
+
+.feature-card:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+}
+
+.feature-icon-box {
+  width: 50px;
+  height: 50px;
+  background: rgba(99, 102, 241, 0.1);
+  color: var(--primary);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.feature-title { font-family: var(--font-heading); font-size: 1.25rem; margin-bottom: 10px; }
+.feature-desc { color: var(--gray); font-size: 0.95rem; }
+
+/* --- 6. SEGMENTS --- */
+.segments-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.segment-card {
+  text-align: center;
+  background: white;
+  padding: 40px 20px;
+  border-radius: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.segment-icon {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* --- 7. TESTIMONIAL --- */
+.testimonial-box {
+  background: var(--dark);
+  color: white;
+  padding: 60px;
+  border-radius: 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonial-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), transparent);
+}
+
+.quote-icon { font-size: 3rem; opacity: 0.3; margin-bottom: 20px; }
+.testimonial-text { font-size: 1.5rem; font-family: var(--font-heading); margin-bottom: 30px; line-height: 1.4; position: relative; }
+.testimonial-author { position: relative; }
+.testimonial-author strong { display: block; font-size: 1.1rem; }
+.testimonial-author span { opacity: 0.8; font-size: 0.9rem; }
+
+/* --- 8. CTA & FORM --- */
+.cta-section { padding: 80px 0; background: white; }
+
+.cta-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.cta-text h2 { font-family: var(--font-heading); font-size: 3rem; margin-bottom: 20px; line-height: 1.1; }
+.cta-text p { font-size: 1.2rem; color: var(--gray); margin-bottom: 30px; }
+
+.contact-form-wrapper {
+  background: white;
+  padding: 40px;
+  border-radius: 24px;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid #f1f5f9;
+}
+
+.contact-form-wrapper h3 { margin-bottom: 20px; font-family: var(--font-heading); }
+
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 8px; color: var(--dark); }
+
+.form-control, select, input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.form-control:focus, select:focus, input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+}
+
+.btn-submit {
+  width: 100%;
+  background: var(--dark);
+  color: white;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-submit:hover { background: black; transform: translateY(-2px); }
+
+/* --- 9. FOOTER --- */
+footer { background: #f8fafc; padding: 60px 0 20px; margin-top: 60px; border-top: 1px solid #e2e8f0; }
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.socials { display: flex; gap: 20px; }
+.socials a {
+  width: 40px; height: 40px;
+  background: white;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--dark);
+  box-shadow: var(--shadow-sm);
+  transition: 0.3s;
+}
+.socials a:hover { background: var(--primary); color: white; transform: translateY(-3px); }
+
+.footer-bottom { text-align: center; color: var(--gray); font-size: 0.9rem; border-top: 1px solid #e2e8f0; padding-top: 20px; }
+
+/* --- 10. RESPONSIVE --- */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 2.5rem; }
+  .navbar { position: relative; flex-direction: column; gap: 20px; }
+  .nav-links { display: none; } /* Simples hide para mobile rápido */
+  .cta-container { grid-template-columns: 1fr; }
+  .stats { grid-template-columns: 1fr; }
+}
