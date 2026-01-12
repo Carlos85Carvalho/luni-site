@@ -1,176 +1,152 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Luni — Sua recepcionista virtual inteligente</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+:root {
+  --primary: #6b6fe8;
+  --primary-dark: #5a5fd6;
+  --secondary: #e879c2;
+  --accent: #22c55e;
+  --dark: #1f2937;
+  --dark-gray: #374151;
+  --light: #f9fafb;
+  --gray: #6b7280;
+  --white: #ffffff;
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-content">
-      <img src="luni-avatar.png" alt="Luni Avatar" style="width:140px;border-radius:50%;margin-bottom:20px;" />
+  --gradient-primary: linear-gradient(135deg, var(--primary), var(--secondary));
+  --gradient-dark: linear-gradient(135deg, var(--dark), var(--dark-gray));
 
-      <h1>🌙 A Luni cuida dos seus clientes por você</h1>
+  --shadow-soft: 0 8px 30px rgba(0, 0, 0, 0.06);
+  --shadow-hover: 0 16px 50px rgba(0, 0, 0, 0.1);
 
-      <p class="hero-subtitle">
-        Enquanto você atende, a Luni responde mensagens, agenda horários,
-        confirma atendimentos e envia lembretes automaticamente —
-        como uma recepcionista de verdade.
-      </p>
+  --radius: 22px;
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
 
-      <div class="hero-buttons">
-        <a href="https://wa.me/5599999999999?text=Oi%2C%20quero%20ver%20a%20Luni%20funcionando%20no%20meu%20neg%C3%B3cio"
-           class="cta-primary">
-          💬 Ver a Luni atendendo agora no WhatsApp
-        </a>
-      </div>
-    </div>
-  </section>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  <!-- QUEM É A LUNI -->
-  <section class="benefits">
-    <div class="container">
-      <h2>Quem é a Luni?</h2>
-      <p class="hero-subtitle">
-        A Luni é uma assistente virtual criada para atender seus clientes de forma rápida,
-        educada e natural. Ela agenda, confirma horários, envia lembretes e acompanha o cliente
-        antes e depois do atendimento — sem você precisar se preocupar.
-      </p>
+body {
+  font-family: var(--font-body);
+  color: var(--dark);
+  line-height: 1.7;
+  background: var(--white);
+}
 
-      <div class="benefits-grid">
-        <div class="benefit-card">
-          <div class="benefit-icon">💬</div>
-          <h3 class="benefit-title">Atendimento imediato</h3>
-          <p class="benefit-desc">
-            Seus clientes são respondidos em segundos, mesmo fora do horário comercial.
-          </p>
-        </div>
+/* HERO */
+.hero {
+  padding: 160px 20px 120px;
+  background: linear-gradient(135deg, #ffffff, #f9fafb);
+  text-align: center;
+}
 
-        <div class="benefit-card">
-          <div class="benefit-icon">📅</div>
-          <h3 class="benefit-title">Agenda organizada</h3>
-          <p class="benefit-desc">
-            A Luni agenda, confirma e evita conflitos de horário automaticamente.
-          </p>
-        </div>
+.hero h1 {
+  font-family: var(--font-heading);
+  font-size: 3.1rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
 
-        <div class="benefit-card">
-          <div class="benefit-icon">🔔</div>
-          <h3 class="benefit-title">Menos faltas</h3>
-          <p class="benefit-desc">
-            Lembretes automáticos reduzem esquecimentos e horários vazios.
-          </p>
-        </div>
+.hero-subtitle {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto 40px;
+  color: var(--gray);
+}
 
-        <div class="benefit-card">
-          <div class="benefit-icon">🔁</div>
-          <h3 class="benefit-title">Relacionamento contínuo</h3>
-          <p class="benefit-desc">
-            A Luni faz follow-up, lembra o cliente de voltar e fortalece a fidelização.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+}
 
-  <!-- SEGMENTOS -->
-  <section class="segments">
-    <div class="container">
-      <h2>Quem pode usar a Luni?</h2>
+/* BOTÕES */
+.cta-primary {
+  background: var(--gradient-primary);
+  color: white;
+  padding: 18px 36px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.05rem;
+  text-decoration: none;
+  box-shadow: var(--shadow-hover);
+}
 
-      <div class="segments-grid">
-        <div class="segment-card">
-          <div class="segment-icon">💇‍♀️</div>
-          <h3 class="segment-title">Salões e Barbearias</h3>
-          <p>
-            Agendamentos, confirmações, combos e atendimento automático no WhatsApp.
-          </p>
-        </div>
+/* SEÇÕES */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 24px;
+}
 
-        <div class="segment-card">
-          <div class="segment-icon">✨</div>
-          <h3 class="segment-title">Clínicas Estéticas</h3>
-          <p>
-            Consultas, procedimentos, lembretes e retornos organizados.
-          </p>
-        </div>
+.benefits,
+.segments,
+.testimonials,
+.cta-final {
+  padding: 100px 0;
+}
 
-        <div class="segment-card">
-          <div class="segment-icon">🐶</div>
-          <h3 class="segment-title">Pet Shops e Veterinárias</h3>
-          <p>
-            Banho, tosa, consultas e acompanhamento automático dos clientes.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
+/* CARDS */
+.benefits-grid,
+.segments-grid,
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
 
-  <!-- DEPOIMENTO -->
-  <section class="testimonials">
-    <div class="container">
-      <h2>O que dizem sobre a Luni</h2>
+.benefit-card,
+.segment-card,
+.testimonial-card {
+  background: white;
+  padding: 40px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+}
 
-      <div class="testimonial-grid">
-        <div class="testimonial-card">
-          <div class="testimonial-rating">★★★★★</div>
-          <p class="testimonial-text">
-            “Depois que colocamos a Luni, não perdemos mais clientes por demora no atendimento.
-            Parece que temos uma recepcionista trabalhando 24 horas.”
-          </p>
-          <strong>Juliana R. — Clínica Estética</strong>
-        </div>
-      </div>
-    </div>
-  </section>
+.benefit-icon {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
 
-  <!-- CTA FINAL -->
-  <section class="cta-final">
-    <div class="cta-container">
-      <div class="cta-card">
-        <h2>Quer ver como a Luni funciona no seu negócio?</h2>
-        <p class="hero-subtitle">
-          Converse agora com a Luni e veja, na prática, como ela atende seus clientes.
-          Sem compromisso.
-        </p>
+/* FORM */
+.contact-form {
+  margin-top: 40px;
+}
 
-        <a href="https://wa.me/5599999999999?text=Oi%2C%20quero%20ver%20a%20Luni%20funcionando"
-           class="cta-primary">
-          💬 Conversar com a Luni agora
-        </a>
+.form-input {
+  width: 100%;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  margin-bottom: 20px;
+  font-size: 1rem;
+}
 
-        <form class="contact-form"
-              action="https://formsubmit.co/carlosdecar@gmail.com"
-              method="POST">
-          <div class="form-group">
-            <input class="form-input" type="text" name="nome" placeholder="Seu nome" required>
-          </div>
-          <div class="form-group">
-            <input class="form-input" type="tel" name="telefone" placeholder="Seu WhatsApp" required>
-          </div>
-          <div class="form-group">
-            <select class="form-input" name="segmento" required>
-              <option value="" disabled selected>Qual é o seu negócio?</option>
-              <option>Salão de Beleza</option>
-              <option>Clínica Estética</option>
-              <option>Pet Shop</option>
-            </select>
-          </div>
-          <button class="btn-submit" type="submit">
-            📩 Quero conhecer a Luni
-          </button>
-        </form>
-      </div>
-    </div>
-  </section>
+.btn-submit {
+  width: 100%;
+  background: var(--gradient-primary);
+  color: white;
+  padding: 16px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+}
 
-  <footer>
-    <p>© 2025 Luni • Desenvolvido por Carlos Carvalho</p>
-    <p>Instagram: @promobelezabr • E-mail: carlosdecar@gmail.com</p>
-  </footer>
+/* FOOTER */
+footer {
+  background: var(--dark);
+  color: #d1d5db;
+  text-align: center;
+  padding: 40px 20px;
+}
 
-</body>
-</html>
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.4rem;
+  }
+}
