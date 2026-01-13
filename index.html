@@ -17,15 +17,21 @@
 
   <nav class="navbar" id="navbar">
     <div class="container nav-content">
+      
       <div class="logo">
         <div class="logo-icon">L</div>
-        <span class="logo-text">Luni<span class="dot">.</span>ai</span>
+        <span class="logo-text">Luni</span>
       </div>
-      <div class="nav-links">
-        <a href="#beneficios" class="nav-link">Benefícios</a>
-        <a href="#segmentos" class="nav-link">Para seu Negócio</a>
-        <a href="#depoimentos" class="nav-link">Depoimentos</a>
-        <a href="#contato" class="nav-link">Contato</a>
+
+      <div class="mobile-menu-icon" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+      </div>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#beneficios" class="nav-link" onclick="toggleMenu()">Benefícios</a>
+        <a href="#segmentos" class="nav-link" onclick="toggleMenu()">Para seu Negócio</a>
+        <a href="#depoimentos" class="nav-link" onclick="toggleMenu()">Depoimentos</a>
+        <a href="#contato" class="nav-link" onclick="toggleMenu()">Contato</a>
         <a href="https://wa.me/5521976675302" class="btn-nav">
           <i class="fab fa-whatsapp"></i> Falar com Consultor
         </a>
@@ -35,9 +41,7 @@
 
   <section class="hero">
     <div class="hero-content container">
-      
       <h1>Sua Recepcionista Virtual com <br>Inteligência Artificial</h1>
-      
       <p class="hero-subtitle">
         Atenda, agende e fidelize clientes no WhatsApp 24h por dia. 
         Sem filas, sem erros e sem perder vendas.
@@ -277,6 +281,13 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    function toggleMenu() {
+      const navLinks = document.getElementById('navLinks');
+      navLinks.classList.toggle('active');
+    }
+  </script>
 
 </body>
 </html>
