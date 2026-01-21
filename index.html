@@ -3,89 +3,143 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Luni IA | Sua Recepcionista Virtual 24h</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <title>Luni IA | Recepcionista Virtual com Inteligência Artificial</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+  <!-- NAVBAR -->
   <nav class="navbar">
     <div class="container nav-content">
       <div class="logo">
-        <img src="logo-nova.jpg" alt="Luni Logo" class="logo-img">
+        <img src="assets/logo-luni.png" alt="Luni IA">
       </div>
+
       <div class="nav-links">
         <a href="#beneficios" class="nav-link">Benefícios</a>
         <a href="#segmentos" class="nav-link">Segmentos</a>
-        <a href="#depoimentos" class="nav-link">Depoimentos</a>
-        <a href="https://wa.me/5521976675302" class="btn-nav">Falar com Consultor</a>
+        <a href="#roi" class="nav-link">ROI</a>
+        <a href="https://wa.me/5521976675302" class="btn-primary">
+          Falar com Consultor
+        </a>
       </div>
     </div>
   </nav>
 
+  <!-- HERO -->
   <section class="hero">
-    <div class="container">
-      <h1>Sua Recepcionista Virtual com <br>Inteligência Artificial</h1>
-      <p style="font-size: 1.25rem; color: #718096; margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto;">
-        Atenda, agende e fidelize clientes no WhatsApp 24h por dia. Sem filas, sem erros e sem perder vendas.
+    <div class="container hero-content">
+      <h1>
+        Sua Recepcionista Virtual com<br>
+        <span>Inteligência Artificial</span>
+      </h1>
+      <p>
+        Atenda, agende e confirme horários no WhatsApp 24h por dia.
+        Sem filas, sem erros e sem perder clientes.
       </p>
-      <a href="https://wa.me/5521976675302?text=Oi" class="btn-nav btn-pulse" style="padding: 20px 50px; font-size: 1.2rem;">Teste Agora</a>
+
+      <div class="hero-buttons">
+        <a href="https://wa.me/5521976675302?text=Oi" class="btn-primary">
+          <i class="fab fa-whatsapp"></i> Testar no WhatsApp
+        </a>
+        <a href="https://forms.gle/Q7pifwXB4TbuKWT4A" class="btn-secondary">
+          Gerar Minha Assistente Agora
+        </a>
+      </div>
     </div>
   </section>
 
+  <!-- BENEFÍCIOS -->
   <section id="beneficios">
     <div class="container">
-      <h2 style="text-align: center; font-size: 2.5rem;">O que a Luni faz por você</h2>
-      <div class="grid">
-        <div class="card"><i class="fab fa-whatsapp"></i><h3>Atendimento 24h</h3><p>Sua assistente atende e tira dúvidas dos clientes a qualquer hora do dia ou da noite.</p></div>
-        <div class="card"><i class="fas fa-calendar-check"></i><h3>Agenda Automática</h3><p>Seus clientes agendam sozinhos pelo WhatsApp em menos de 2 minutos.</p></div>
-        <div class="card"><i class="fas fa-bell"></i><h3>Redução de Faltas</h3><p>Lembretes automáticos enviados antes de cada horário agendado.</p></div>
-      </div>
-    </div>
-  </section>
+      <h2>O que a Luni faz por você</h2>
 
-  <section id="segmentos" style="background: #f8fafc;">
-    <div class="container">
-      <h2 style="text-align: center; font-size: 2.5rem;">Perfeito para seu negócio</h2>
       <div class="grid">
-        <div class="card"><i class="fas fa-scissors"></i><h3>Beleza & Estética</h3><p>Salões, Barbearias e Clínicas.</p></div>
-        <div class="card"><i class="fas fa-user-md"></i><h3>Saúde</h3><p>Consultórios e Clínicas Médicas.</p></div>
-        <div class="card"><i class="fas fa-paw"></i><h3>Pet Shop</h3><p>Banho, Tosa e Veterinárias.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="depoimentos" style="background: #1a202c; color: white;">
-    <div class="container">
-      <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 40px;">O que nossos clientes dizem</h2>
-      <div class="grid">
-        <div class="card" style="background: rgba(255,255,255,0.05); color: white; border: 1px solid rgba(255,255,255,0.1);">
-          <p style="font-style: italic;">"Aumentamos 40% no faturamento em apenas 2 meses de uso."</p>
-          <strong style="display:block; margin-top:20px; color: var(--secondary);">Juliana Rodrigues</strong>
+        <div class="card">
+          <i class="fab fa-whatsapp"></i>
+          <h3>Atendimento 24h</h3>
+          <p>Responde clientes instantaneamente, mesmo fora do horário comercial.</p>
         </div>
-        <div class="card" style="background: rgba(255,255,255,0.05); color: white; border: 1px solid rgba(255,255,255,0.1);">
-          <p style="font-style: italic;">"As faltas praticamente zeraram com os lembretes automáticos."</p>
-          <strong style="display:block; margin-top:20px; color: var(--secondary);">Carlos Renato</strong>
+
+        <div class="card">
+          <i class="fas fa-calendar-check"></i>
+          <h3>Agendamento Automático</h3>
+          <p>Clientes marcam sozinhos em menos de 2 minutos.</p>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-bell"></i>
+          <h3>Redução de Faltas</h3>
+          <p>Lembretes automáticos e confirmação de presença.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="contato" style="text-align: center;">
+  <!-- SEGMENTOS -->
+  <section id="segmentos" class="light">
     <div class="container">
-      <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Pronto para transformar seu atendimento?</h2>
-      <p style="font-size: 1.2rem; color: #718096; margin-bottom: 40px;">Crie sua assistente virtual configurada para seu negócio em 1 minuto!</p>
-      <a href="https://forms.gle/Q7pifwXB4TbuKWT4A" target="_blank" class="btn-nav btn-pulse" style="background: #10b981; padding: 22px 60px; font-size: 1.3rem;">
+      <h2>Perfeito para seu negócio</h2>
+
+      <div class="grid">
+        <div class="card">
+          <i class="fas fa-scissors"></i>
+          <h3>Beleza & Estética</h3>
+          <p>Salões, barbearias e clínicas.</p>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-user-md"></i>
+          <h3>Saúde</h3>
+          <p>Consultórios e clínicas.</p>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-paw"></i>
+          <h3>Pet Shop</h3>
+          <p>Banho, tosa e veterinárias.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROI -->
+  <section id="roi" class="roi">
+    <div class="container roi-box">
+      <h2>Retorno Financeiro Real</h2>
+      <p>
+        Um único horário vazio por dia pode representar milhares de reais
+        perdidos por mês.
+      </p>
+      <strong>
+        A Luni se paga com 1 ou 2 agendamentos recuperados.
+      </strong>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta">
+    <div class="container">
+      <h2>Pronto para transformar seu atendimento?</h2>
+      <p>Crie sua assistente virtual em menos de 1 minuto.</p>
+
+      <a href="https://forms.gle/Q7pifwXB4TbuKWT4A" class="btn-primary pulse">
         Gerar Minha Assistente Agora
       </a>
     </div>
   </section>
 
-  <footer style="padding: 60px 0; background: #f1f5f9; text-align: center; border-top: 1px solid #e2e8f0; color: #718096;">
+  <!-- FOOTER -->
+  <footer>
     <div class="container">
-      <p style="font-weight: 600;">Comercial: (22) 98124-2946 | contato@luni.ai</p>
-      <p style="margin-top: 15px; font-size: 0.9rem;">&copy; 2025 Luni IA. Todos os direitos reservados.</p>
+      <p><strong>Comercial:</strong> (22) 98124-2946</p>
+      <p>© 2026 Luni IA — Todos os direitos reservados</p>
     </div>
   </footer>
 
