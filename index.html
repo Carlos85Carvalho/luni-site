@@ -12,6 +12,24 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <link rel="stylesheet" href="style.css">
+  
+  <style>
+    @media (max-width: 768px) {
+      /* Ajuste do Botão Final no Celular */
+      .btn-submit-final {
+        width: 100% !important; /* Ocupa toda a largura */
+        padding: 16px 20px !important; /* Ajusta espaçamento */
+        font-size: 1.1rem !important; /* Reduz um pouco a fonte */
+        flex-direction: row; /* Garante ícone e texto na mesma linha */
+      }
+      .contact-form-final {
+        padding: 30px 20px !important; /* Reduz padding da caixa no mobile */
+      }
+      .contact-form-final p {
+        font-size: 1rem !important; /* Reduz um pouco o texto descritivo */
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -48,13 +66,13 @@
       </p>
       
       <div class="hero-buttons">
-        <a href="#contato" class="cta-primary btn-pulse">
-          <i class="fas fa-magic"></i> Gerar Minha Luni Agora
+        <a href="https://wa.me/5521976675302?text=Oi%2C%20gostaria%20de%20ver%20a%20Luni%20funcionando" class="cta-primary btn-pulse">
+          <i class="fab fa-whatsapp"></i> Teste Agora
         </a>
       </div>
       
       <p style="margin-top: 30px; color: var(--gray); font-size: 0.9rem; opacity: 0.8;">
-        Configuração automática em 1 minuto
+        Demonstração imediata pelo WhatsApp
       </p>
     </div>
   </section>
@@ -198,20 +216,16 @@
       <div class="cta-card">
         <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Pronto para modernizar seu atendimento?</h2>
         
-        <div class="contact-form" style="text-align: center; border: none; box-shadow: none;">
+        <div class="contact-form contact-form-final" style="text-align: center; border: none; box-shadow: none;">
           <p style="font-size: 1.2rem; color: var(--gray); margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">
             A Luni cria sua atendente, sua agenda e sua planilha de gestão <strong>automaticamente em 1 minuto!</strong> 🚀
           </p>
           
-          <a href="https://forms.gle/Q7pifwXB4TbuKWT4A" target="_blank" class="btn-submit btn-pulse" style="display: inline-flex; justify-content: center; align-items: center; text-decoration: none; width: auto; padding: 20px 40px; font-size: 1.2rem; gap: 12px; margin-bottom: 20px;">
+          <a href="https://forms.gle/Q7pifwXB4TbuKWT4A" target="_blank" class="btn-submit btn-pulse btn-submit-final" style="display: inline-flex; justify-content: center; align-items: center; text-decoration: none; width: auto; padding: 20px 40px; font-size: 1.2rem; gap: 12px;">
             <i class="fas fa-magic"></i> Gerar Minha Assistente Agora
           </a>
-
-          <p style="margin-top: 15px; font-size: 0.9rem; color: #a0aec0;">
-            <i class="fas fa-check-circle" style="color: var(--accent);"></i> Teste gratuito imediato.
-            <i class="fas fa-check-circle" style="color: var(--accent); margin-left: 10px;"></i> Configuração automática.
-          </p>
-        </div>
+          
+          </div>
         </div>
     </div>
   </section>
