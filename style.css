@@ -1,40 +1,49 @@
+/* --- 1. VARIÁVEIS --- */
 :root {
-  --primary: #7c3aed;
-  --secondary: #ec4899;
-  --dark: #1e1b4b;
-  --light: #f8fafc;
-  --gray: #64748b;
+  --primary: #5a67d8;
+  --secondary: #d53f8c;
+  --dark: #1a202c;
+  --light: #f7fafc;
+  --gray: #718096;
   --white: #ffffff;
-  --gradient: linear-gradient(135deg, #7c3aed, #ec4899);
+  --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
 }
 
+/* --- RESET --- */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Inter', sans-serif;
   color: var(--dark);
   background: var(--white);
-  padding-top: 110px;
+  line-height: 1.6;
+  padding-top: 140px;
 }
 
 .container {
   max-width: 1200px;
-  margin: auto;
+  margin: 0 auto;
   padding: 0 24px;
 }
 
-/* NAVBAR */
+/* --- NAVBAR --- */
 .navbar {
   position: fixed;
   top: 0;
-  width: 100%;
-  background: rgba(255,255,255,0.95);
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(0,0,0,0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   z-index: 1000;
 }
 
@@ -42,16 +51,17 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 100px;
+  min-height: 120px;
 }
 
-.logo img {
-  height: 70px;
+.logo-img {
+  height: 110px;
 }
 
 .nav-links {
   display: flex;
   gap: 24px;
+  align-items: center;
 }
 
 .nav-link {
@@ -60,81 +70,117 @@ body {
   font-weight: 500;
 }
 
-.btn-primary {
+.btn-nav {
   background: var(--gradient);
   color: white;
-  padding: 14px 28px;
+  padding: 12px 24px;
   border-radius: 50px;
   text-decoration: none;
   font-weight: 600;
 }
 
-.btn-secondary {
-  border: 2px solid var(--primary);
-  color: var(--primary);
-  padding: 14px 28px;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-/* HERO */
+/* --- HERO --- */
 .hero {
-  background: linear-gradient(135deg, #1e1b4b, #312e81);
-  color: white;
+  background: var(--light);
   text-align: center;
-  padding: 120px 0;
+  padding: 80px 0;
 }
 
 .hero h1 {
   font-size: 3rem;
-  font-weight: 900;
+  font-weight: 800;
+  margin-bottom: 20px;
 }
 
-.hero h1 span {
+.hero p {
+  color: var(--gray);
+  max-width: 700px;
+  margin: 0 auto 30px;
+}
+
+.gradient-text {
   background: var(--gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.hero p {
-  max-width: 700px;
-  margin: 24px auto;
-  color: #cbd5e1;
-}
-
 .hero-buttons {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  flex-wrap: wrap;
+  margin-top: 20px;
 }
 
-/* SEÇÕES */
+.btn-primary {
+  background: var(--gradient);
+  color: white;
+  padding: 16px 36px;
+  border-radius: 50px;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* --- SEÇÕES --- */
 section {
   padding: 80px 0;
 }
 
-h2 {
-  text-align: center;
-  font-size: 2.4rem;
-  margin-bottom: 40px;
+.section-light {
+  background: var(--light);
 }
 
+h2 {
+  text-align: center;
+  font-size: 2.3rem;
+  margin-bottom: 12px;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--gray);
+}
+
+/* --- GRID / CARDS --- */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
 }
 
 .card {
   background: white;
-  padding: 40px;
+  padding: 36px;
   border-radius: 16px;
+  box-shadow: var(--shadow);
   text-align: center;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
-.card i {
-  font-size: 2.5rem;
-  color: var(--primary);
+/* --- CTA --- */
+.cta {
+  background: var(--dark);
+  color: white;
+  text-align: center;
+}
+
+.cta p {
+  color: #cbd5e0;
+  margin: 20px 0 30px;
+}
+
+/* --- ANIMAÇÃO --- */
+.btn-pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(90, 103, 216, 0.6); }
+  70% { box-shadow: 0 0 0 15px rgba(90, 103, 216, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(90, 103, 216, 0); }
+}
+
+/* --- RESPONSIVO --- */
+@media (max-width: 768px) {
+  body { padding-top: 110px; }
+  .logo-img { height: 80px; }
+  .nav-links { display: none; }
+  .hero h1 { font-size: 2rem; }
+}
