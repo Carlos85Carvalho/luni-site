@@ -1,87 +1,110 @@
-/* --- 1. CONFIGURAÇÕES CORES --- */
+/* --- 1. VARIÁVEIS E RESET --- */
 :root {
   --primary: #5a67d8;
+  --primary-dark: #4c51bf;
   --secondary: #d53f8c;
+  --accent: #10b981;
   --dark: #1a202c;
+  --dark-gray: #2d3748;
+  --light: #f7fafc;
+  --gray: #718096;
   --white: #ffffff;
-  --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  --shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 20px 60px rgba(0, 0, 0, 0.12);
+  --radius: 16px;
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
-/* --- 2. CORPO DO SITE --- */
-body { 
-  font-family: 'Inter', sans-serif; 
-  /* Esse espaço garante que a logo não cubra o título */
-  padding-top: 180px !important; 
-  background-color: var(--white);
+body {
+  font-family: var(--font-body);
   color: var(--dark);
-  line-height: 1.6;
+  line-height: 1.7;
+  overflow-x: hidden;
+  background-color: var(--white);
+  /* ESPAÇO IMPORTANTE PARA A LOGO GRANDE */
+  padding-top: 170px !important; 
 }
 
-/* --- 3. BARRA DE NAVEGAÇÃO (NAVBAR) --- */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+/* --- 2. NAVBAR (CABECALHO) --- */
 .navbar {
-  position: fixed; 
-  top: 0; 
-  width: 100%;
-  background: white; 
-  border-bottom: 1px solid #eee;
-  z-index: 1000; 
-  /* Altura mínima para a barra branca acompanhar a logo */
-  min-height: 140px; 
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  padding: 5px 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+  min-height: 140px;
   display: flex;
   align-items: center;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
-.container { 
-  max-width: 1100px; 
-  margin: 0 auto; 
-  padding: 0 20px; 
+.nav-content { 
   display: flex; 
   justify-content: space-between; 
   align-items: center; 
   width: 100%;
 }
 
-/* TAMANHO DA LOGO */
-.logo-img { 
-  height: 160px !important; /* AQUI VOCÊ CONTROLA O TAMANHO */
-  width: auto !important; 
+.logo-img {
+  height: 150px !important; /* TAMANHO DA LOGO */
+  width: auto !important;
   display: block;
 }
 
-.nav-links a { 
-  text-decoration: none; 
-  color: var(--dark); 
-  font-weight: 600;
-  padding: 10px 20px;
-}
+.nav-links { display: flex; align-items: center; gap: 30px; }
+.nav-link { color: var(--dark-gray); font-weight: 500; transition: color 0.3s; font-size: 0.95rem; text-decoration: none; }
+.nav-link:hover { color: var(--primary); }
 
-/* --- 4. CONTEÚDO HERO --- */
-.hero { text-align: center; padding: 60px 20px; background: #f9fafb; }
-.hero h1 { font-size: 3rem; margin-bottom: 20px; line-height: 1.2; }
-
-/* BOTÕES */
-.btn { 
-  background: var(--gradient); 
-  color: white; 
-  padding: 18px 40px; 
-  border-radius: 50px; 
-  text-decoration: none; 
-  font-weight: bold;
-  display: inline-block;
-  transition: transform 0.3s;
+.btn-nav {
+  background: var(--gradient-primary);
+  color: white; padding: 10px 24px;
+  border-radius: 50px; font-weight: 600; font-size: 0.9rem;
+  transition: all 0.3s;
   box-shadow: 0 4px 15px rgba(90, 103, 216, 0.3);
+  display: flex; align-items: center; gap: 8px;
+  text-decoration: none;
 }
-.btn:hover { transform: translateY(-3px); }
 
-/* --- 5. AJUSTE PARA CELULAR --- */
-@media (max-width: 768px) {
-  body { padding-top: 150px !important; }
-  .navbar { min-height: 120px; }
-  .logo-img { height: 110px !important; }
-  .nav-links { display: none; } /* Esconde o "Suporte" no celular para não bugar */
-  .hero h1 { font-size: 2rem; }
+/* --- 3. HERO (INICIAL) --- */
+.hero { padding: 80px 0; background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); text-align: center; }
+.hero h1 { font-family: var(--font-heading); font-size: 3.5rem; font-weight: 800; margin-bottom: 20px; background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hero-subtitle { font-size: 1.25rem; color: var(--dark-gray); max-width: 600px; margin: 0 auto 30px; }
+
+.cta-primary {
+  background: var(--gradient-primary); color: white;
+  padding: 18px 40px; border-radius: 50px;
+  font-weight: 600; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 10px;
+  box-shadow: 0 8px 30px rgba(90, 103, 216, 0.4);
 }
+
+/* --- 4. SECOES (BENEFICIOS, STATS) --- */
+.stats-section { padding: 60px 0; }
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; }
+.stat-card { background: white; padding: 30px; border-radius: var(--radius); text-align: center; box-shadow: var(--shadow-soft); border-left: 4px solid var(--primary); }
+.stat-number { display: block; font-size: 2.5rem; font-weight: 800; margin: 10px 0; }
+
+.benefits { padding: 100px 0; background: var(--light); }
+.benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+.benefit-card { background: white; padding: 40px; border-radius: var(--radius); box-shadow: var(--shadow-soft); }
+
+/* --- RESPONSIVO --- */
+@media (max-width: 768px) {
+  body { padding-top: 130px !important; }
+  .navbar { min-height: 110px; }
+  .logo-img { height: 100px !important; }
+  .nav-links { display: none; }
+  .hero h1 { font-size: 2.2rem; }
+}
+
+.btn-pulse { animation: pulsing 2s infinite; }
+@keyframes pulsing { 0% { box-shadow: 0 0 0 0 rgba(90, 103, 216, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(90, 103, 216, 0); } 100% { box-shadow: 0 0 0 0 rgba(90, 103, 216, 0); } }
