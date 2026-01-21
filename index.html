@@ -18,11 +18,14 @@
     <div class="container nav-content">
       <img src="logo-nova.jpg" alt="Luni Assistente Virtual" class="logo-img" />
 
-      <div class="nav-links">
+      <nav class="nav-links">
         <a href="#solucao" class="nav-link">Como Funciona</a>
         <a href="#beneficios" class="nav-link">Benefícios</a>
         <a href="#cta" class="btn-nav">Testar Luni</a>
-      </div>
+      </nav>
+
+      <!-- HAMBURGER (MOBILE) -->
+      <div class="hamburger" onclick="toggleMenu()">☰</div>
     </div>
   </header>
 
@@ -39,7 +42,7 @@
       </p>
 
       <div class="hero-buttons">
-        <a href="#cta" class="btn-primary btn-pulse">Gerar Minha Assistente</a>
+        <a href="#cta" class="btn-primary btn-pulse">Testar Luni</a>
       </div>
     </div>
   </section>
@@ -91,30 +94,22 @@
       <div class="grid">
         <div class="card">
           <h3>⚡ Atendimento em 3 Segundos</h3>
-          <p>
-            Respostas instantâneas, mesmo com vários clientes ao mesmo tempo.
-          </p>
+          <p>Respostas instantâneas, mesmo com vários clientes ao mesmo tempo.</p>
         </div>
 
         <div class="card">
           <h3>📲 Agendamento Automático</h3>
-          <p>
-            O cliente agenda sozinho pelo WhatsApp em menos de 2 minutos.
-          </p>
+          <p>O cliente agenda sozinho pelo WhatsApp em menos de 2 minutos.</p>
         </div>
 
         <div class="card">
           <h3>🔔 Lembrete Anti-Furo</h3>
-          <p>
-            Confirmação automática que reduz faltas em até 90%.
-          </p>
+          <p>Confirmação automática que reduz faltas em até 90%.</p>
         </div>
 
         <div class="card">
           <h3>🧠 Inteligência Real</h3>
-          <p>
-            Entende áudios, gírias e negocia horários como uma pessoa.
-          </p>
+          <p>Entende áudios, gírias e negocia horários como uma pessoa.</p>
         </div>
       </div>
     </div>
@@ -143,10 +138,28 @@
       </p>
 
       <a href="https://forms.gle/Q7pifwXB4TbuKWT4A" class="btn-primary btn-pulse">
-        Gerar Minha Assistente Agora
+        Testar Luni Agora
       </a>
     </div>
   </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <img src="logo-nova.jpg" alt="Luni" class="footer-logo" />
+      <p>
+        © 2026 Luni Assistente Virtual<br>
+        Atendimento inteligente para negócios modernos
+      </p>
+    </div>
+  </footer>
+
+  <!-- SCRIPT MENU MOBILE -->
+  <script>
+    function toggleMenu() {
+      document.querySelector('.nav-links').classList.toggle('active');
+    }
+  </script>
 
 </body>
 </html>
