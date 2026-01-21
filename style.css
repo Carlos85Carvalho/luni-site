@@ -1,48 +1,39 @@
 /* --- 1. VARIÁVEIS E RESET --- */
 :root {
   --primary: #5a67d8;
-  --primary-dark: #4c51bf;
   --secondary: #d53f8c;
-  --accent: #10b981;
   --dark: #1a202c;
-  --dark-gray: #2d3748;
-  --light: #f7fafc;
   --gray: #718096;
   --white: #ffffff;
   --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-  --shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.08);
   --radius: 16px;
-  --font-heading: 'Poppins', sans-serif;
-  --font-body: 'Inter', sans-serif;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: var(--font-body);
+  font-family: 'Inter', sans-serif;
   color: var(--dark);
   line-height: 1.7;
-  overflow-x: hidden;
   background-color: var(--white);
-  padding-top: 140px !important; /* Espaço para a logo extra grande */
+  padding-top: 160px !important; /* Espaço para a logo grande não cobrir o texto */
 }
 
 .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-/* --- 2. NAVBAR PREMIUM --- */
+/* --- 2. NAVBAR (CABECALHO) --- */
 .navbar {
   position: fixed;
   top: 0; left: 0; right: 0;
   background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(10px);
-  padding: 5px 0; 
   z-index: 1000;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+  min-height: 120px;
   display: flex;
   align-items: center;
-  min-height: 100px;
 }
 
 .nav-content { 
@@ -52,52 +43,42 @@ body {
   width: 100%;
 }
 
-.logo { display: flex; align-items: center; }
-
 .logo-img {
-  height: 120px !important; /* LOGO GRANDE */
+  height: 130px !important; /* TAMANHO DA LOGO */
   width: auto !important;
   display: block;
-  transition: transform 0.3s ease;
 }
 
 .nav-links { display: flex; align-items: center; gap: 30px; }
-.nav-link { color: var(--dark-gray); font-weight: 500; transition: color 0.3s; font-size: 0.95rem; text-decoration: none; }
-.nav-link:hover { color: var(--primary); }
+.nav-link { color: var(--dark); font-weight: 500; text-decoration: none; font-size: 0.95rem; }
 
 .btn-nav {
   background: var(--gradient-primary);
   color: white; padding: 10px 24px;
-  border-radius: 50px; font-weight: 600; font-size: 0.9rem;
-  transition: all 0.3s;
-  box-shadow: 0 4px 15px rgba(90, 103, 216, 0.3);
-  display: flex; align-items: center; gap: 8px;
+  border-radius: 50px; font-weight: 600;
   text-decoration: none;
 }
 
-.mobile-menu-icon { display: none; font-size: 1.5rem; color: var(--dark); cursor: pointer; }
+/* --- 3. HERO (CONTEUDO INICIAL) --- */
+.hero { padding: 60px 0; text-align: center; background: #f8fafc; }
+.hero h1 { font-size: 3rem; font-weight: 800; margin-bottom: 20px; }
+.hero-subtitle { font-size: 1.2rem; color: var(--gray); margin-bottom: 30px; }
 
-/* --- 3. HERO SECTION --- */
-.hero { padding: 80px 0; background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); text-align: center; }
-.hero h1 { font-family: var(--font-heading); font-size: 3.5rem; font-weight: 800; margin-bottom: 20px; background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.cta-primary { background: var(--gradient-primary); color: white; padding: 18px 40px; border-radius: 50px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; }
+.cta-primary {
+  background: var(--gradient-primary);
+  color: white; padding: 18px 40px;
+  border-radius: 50px; font-weight: 600;
+  text-decoration: none;
+  display: inline-flex; align-items: center; gap: 10px;
+}
 
-/* --- 4. STATS, BENEFITS, ETC (Simplificado para o CSS) --- */
-.stats-section { padding: 60px 0; }
-.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; }
-.stat-card { background: white; padding: 30px; border-radius: var(--radius); text-align: center; box-shadow: var(--shadow-soft); }
-.benefits { padding: 80px 0; background: var(--light); }
-.benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
-.benefit-card { background: white; padding: 40px; border-radius: var(--radius); box-shadow: var(--shadow-soft); }
-
-/* --- RESPONSIVO --- */
+/* --- RESPONSIVO CELULAR --- */
 @media (max-width: 768px) {
-  body { padding-top: 110px !important; }
-  .logo-img { height: 80px !important; }
-  .mobile-menu-icon { display: block; }
-  .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: white; flex-direction: column; padding: 20px; }
-  .nav-links.active { display: flex; }
-  .hero h1 { font-size: 2.2rem; }
+  body { padding-top: 130px !important; }
+  .navbar { min-height: 100px; }
+  .logo-img { height: 90px !important; }
+  .nav-links { display: none; }
+  .hero h1 { font-size: 2rem; }
 }
 
 .btn-pulse { animation: pulsing 2s infinite; }
