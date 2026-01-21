@@ -14,15 +14,19 @@
   <link rel="stylesheet" href="style.css">
   
   <style>
-    /* Ajuste da Logo Nova */
+    /* AJUSTE DEFINITIVO DA LOGO */
     .logo-img {
-        height: 60px; /* Aumentei um pouco para ler o texto da imagem */
-        width: auto;
+        height: 100px !important; /* Tamanho grande para destaque */
+        width: auto !important;
         display: block;
+        margin: 5px 0;
     }
 
-    /* Ajustes do Botão no Celular */
+    /* AJUSTES PARA CELULAR */
     @media (max-width: 768px) {
+      .logo-img {
+          height: 75px !important; /* Um pouco menor no celular para não cobrir tudo */
+      }
       .btn-submit-final {
         width: 100% !important;
         padding: 16px 20px !important;
