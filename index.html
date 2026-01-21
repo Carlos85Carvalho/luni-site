@@ -4,160 +4,87 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Luni — Recepcionista Virtual com IA</title>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- NAVBAR -->
   <header class="navbar">
     <div class="container nav-content">
       <img src="logo-nova.jpg" alt="Luni Assistente Virtual" class="logo-img" />
 
-      <nav class="nav-links">
+      <nav class="nav-links" id="navLinks">
         <a href="#solucao" class="nav-link">Como Funciona</a>
         <a href="#beneficios" class="nav-link">Benefícios</a>
-        <a href="#cta" class="btn-nav">Testar Luni</a>
+        <a href="https://wa.me/5521976675302?text=Oi%2C%20gostaria%20de%20testar%20a%20Luni" class="btn-nav">Testar Agora</a>
       </nav>
 
-      <!-- HAMBURGER (MOBILE) -->
       <div class="hamburger" onclick="toggleMenu()">☰</div>
     </div>
   </header>
 
-  <!-- HERO -->
   <section class="hero">
     <div class="container">
       <h1>
         Sua Recepcionista Virtual com<br>
         <span class="gradient-text">Inteligência Artificial</span>
       </h1>
-      <p>
-        Atenda, agende e confirme horários no WhatsApp 24h por dia.
-        Sem perder clientes e sem depender de ninguém.
-      </p>
-
+      <p>Atenda, agende e confirme horários no WhatsApp 24h por dia. Experimente agora mesmo!</p>
       <div class="hero-buttons">
-        <a href="#cta" class="btn-primary btn-pulse">Testar Luni</a>
+        <a href="https://wa.me/5521976675302?text=Oi%2C%20gostaria%20de%20testar%20a%20Luni" class="btn-nav btn-pulse" style="padding: 18px 40px; font-size: 1.1rem;">Teste Agora no WhatsApp</a>
       </div>
     </div>
   </section>
 
-  <!-- DOR -->
-  <section>
+  <section id="beneficios">
     <div class="container">
       <h2>💸 Por Que Você Perde Dinheiro?</h2>
-      <p class="section-subtitle">
-        Problemas silenciosos que custam caro para o seu negócio.
-      </p>
-
       <div class="grid">
         <div class="card">
-          <h3>⏳ Demora na Resposta</h3>
-          <p>
-            Se você demora 20 minutos para responder no WhatsApp,
-            o cliente fecha com o concorrente.
-          </p>
+          <h3>⏳ Demora no WhatsApp</h3>
+          <p>Se você demora a responder, seu cliente chama o concorrente. A Luni responde na hora.</p>
         </div>
-
         <div class="card">
-          <h3>🚫 O “Bolo” (No-Show)</h3>
-          <p>
-            O cliente esquece, sua cadeira fica vazia
-            e você perde aquele faturamento.
-          </p>
+          <h3>🚫 Cadeiras Vazias</h3>
+          <p>Esquecimentos geram prejuízo. A Luni envia lembretes e confirma presenças automaticamente.</p>
         </div>
-
         <div class="card">
-          <h3>📅 Domingos e Feriados</h3>
-          <p>
-            Seu negócio fecha, mas o cliente quer marcar agora.
-            Quando você vê, já perdeu.
-          </p>
+          <h3>📅 Finais de Semana</h3>
+          <p>O cliente quer agendar no domingo à noite? A Luni trabalha enquanto você descansa.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SOLUÇÃO -->
-  <section id="beneficios" class="section-light">
+  <section id="solucao" style="background: var(--dark); color: white; text-align: center;">
     <div class="container">
-      <h2>🤖 Sua Nova Equipe Digital</h2>
-      <p class="section-subtitle">
-        Uma assistente que nunca atrasa, nunca esquece e nunca para.
-      </p>
-
-      <div class="grid">
-        <div class="card">
-          <h3>⚡ Atendimento em 3 Segundos</h3>
-          <p>Respostas instantâneas, mesmo com vários clientes ao mesmo tempo.</p>
-        </div>
-
-        <div class="card">
-          <h3>📲 Agendamento Automático</h3>
-          <p>O cliente agenda sozinho pelo WhatsApp em menos de 2 minutos.</p>
-        </div>
-
-        <div class="card">
-          <h3>🔔 Lembrete Anti-Furo</h3>
-          <p>Confirmação automática que reduz faltas em até 90%.</p>
-        </div>
-
-        <div class="card">
-          <h3>🧠 Inteligência Real</h3>
-          <p>Entende áudios, gírias e negocia horários como uma pessoa.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- COMO FUNCIONA -->
-  <section id="solucao">
-    <div class="container">
-      <h2>Como a Luni Funciona</h2>
-
-      <div class="grid">
-        <div class="card">Cliente chama no WhatsApp</div>
-        <div class="card">Luni atende e agenda</div>
-        <div class="card">Confirma automaticamente</div>
-        <div class="card">Você atende quem aparece</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section id="cta" class="cta">
-    <div class="container">
-      <h2>Pronto para parar de perder dinheiro?</h2>
-      <p>
-        Ative agora sua assistente virtual configurada para o seu negócio.
-      </p>
-
-      <a href="https://forms.gle/Q7pifwXB4TbuKWT4A" class="btn-primary btn-pulse">
-        Testar Luni Agora
+      <h2 style="color: white;">Pronto para automatizar seu negócio?</h2>
+      <p style="color: #cbd5e0; margin-bottom: 40px;">Crie sua assistente virtual personalizada para o seu salão em apenas 1 minuto.</p>
+      
+      <a href="https://forms.gle/Q7pifwXB4TbuKWT4A" class="btn-nav btn-pulse" style="background: #10b981; padding: 22px 60px; font-size: 1.3rem;">
+        Gerar Minha Assistente Agora
       </a>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer class="footer">
-    <div class="container footer-content">
+    <div class="container">
       <img src="logo-nova.jpg" alt="Luni" class="footer-logo" />
-      <p>
-        © 2026 Luni Assistente Virtual<br>
-        Atendimento inteligente para negócios modernos
-      </p>
+      <p>Comercial: (22) 98124-2946 | contato@luni.ai</p>
+      <div style="margin-top: 20px;">
+        <a href="https://wa.me/5521976675302" style="color: white; margin: 0 10px; font-size: 1.5rem;"><i class="fab fa-whatsapp"></i></a>
+        <a href="#" style="color: white; margin: 0 10px; font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
+      </div>
+      <p style="margin-top: 30px; font-size: 0.8rem; opacity: 0.5;">© 2026 Luni IA. Todos os direitos reservados.</p>
     </div>
   </footer>
 
-  <!-- SCRIPT MENU MOBILE -->
   <script>
     function toggleMenu() {
-      document.querySelector('.nav-links').classList.toggle('active');
+      document.getElementById('navLinks').classList.toggle('active');
     }
   </script>
 
