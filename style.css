@@ -1,68 +1,140 @@
-/* --- 1. VARIÁVEIS --- */
 :root {
-  --primary: #5a67d8;
-  --secondary: #d53f8c;
-  --dark: #1a202c;
-  --light: #f7fafc;
-  --gray: #718096;
+  --primary: #7c3aed;
+  --secondary: #ec4899;
+  --dark: #1e1b4b;
+  --light: #f8fafc;
+  --gray: #64748b;
   --white: #ffffff;
-  --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-  --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  --gradient: linear-gradient(135deg, #7c3aed, #ec4899);
 }
 
-/* --- 2. RESET E ESTRUTURA --- */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: 'Inter', sans-serif;
   color: var(--dark);
-  line-height: 1.6;
-  background-color: var(--white);
-  padding-top: 140px !important; /* Espaço para a logo sem cobrir o texto */
+  background: var(--white);
+  padding-top: 110px;
 }
-.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-/* --- 3. NAVBAR PROFISSIONAL --- */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 24px;
+}
+
+/* NAVBAR */
 .navbar {
-  position: fixed; top: 0; left: 0; right: 0;
-  background: rgba(255, 255, 255, 0.98);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(255,255,255,0.95);
   backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
   z-index: 1000;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  min-height: 120px;
-  display: flex; align-items: center;
-}
-.nav-content { display: flex; justify-content: space-between; align-items: center; width: 100%; }
-
-.logo-img {
-  height: 110px !important; /* Tamanho grande e elegante */
-  width: auto !important;
-  display: block;
 }
 
-.nav-links { display: flex; align-items: center; gap: 25px; }
-.nav-link { color: var(--dark); font-weight: 500; text-decoration: none; font-size: 0.95rem; }
-.btn-nav {
-  background: var(--gradient); color: white; padding: 12px 24px;
-  border-radius: 50px; font-weight: 600; text-decoration: none; transition: 0.3s;
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
 }
 
-/* --- 4. SEÇÕES --- */
-section { padding: 80px 0; }
-.hero { background: var(--light); text-align: center; }
-.hero h1 { font-size: 3rem; font-weight: 800; margin-bottom: 20px; line-height: 1.2; }
-
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
-.card { background: white; padding: 40px; border-radius: 16px; box-shadow: var(--shadow); text-align: center; }
-.card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; display: block; }
-
-/* --- 5. RESPONSIVO --- */
-@media (max-width: 768px) {
-  body { padding-top: 110px !important; }
-  .logo-img { height: 80px !important; }
-  .nav-links { display: none; }
-  .hero h1 { font-size: 2rem; }
+.logo img {
+  height: 70px;
 }
 
-.btn-pulse { animation: pulsing 2s infinite; }
-@keyframes pulsing { 0% { box-shadow: 0 0 0 0 rgba(90, 103, 216, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(90, 103, 216, 0); } 100% { box-shadow: 0 0 0 0 rgba(90, 103, 216, 0); } }
+.nav-links {
+  display: flex;
+  gap: 24px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--dark);
+  font-weight: 500;
+}
+
+.btn-primary {
+  background: var(--gradient);
+  color: white;
+  padding: 14px 28px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.btn-secondary {
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  padding: 14px 28px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, #1e1b4b, #312e81);
+  color: white;
+  text-align: center;
+  padding: 120px 0;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 900;
+}
+
+.hero h1 span {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+  max-width: 700px;
+  margin: 24px auto;
+  color: #cbd5e1;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* SEÇÕES */
+section {
+  padding: 80px 0;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2.4rem;
+  margin-bottom: 40px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+}
+
+.card {
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.card i {
+  font-size: 2.5rem;
+  color: var(--primary);
