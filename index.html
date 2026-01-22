@@ -14,44 +14,31 @@
 
 <header class="navbar">
   <div class="container nav-content">
+    
     <img src="logo-nova.jpg" alt="Luni Assistente Virtual" class="logo-img" />
 
-    <nav class="nav-links">
-      <a href="#equipe" class="nav-link">Vantagens</a>
-      <a href="#funciona" class="nav-link">Como Funciona</a>
-      <a href="#precos" class="nav-link">Planos</a>
+    <div class="nav-right">
+        <a href="https://wa.me/5521976675302" class="btn-nav-header" target="_blank">
+            Falar no WhatsApp
+        </a>
 
-      <a
-        href="https://wa.me/5521976675302?text=Oi%2C%20quero%20testar%20a%20Luni"
-        class="btn-nav"
-        target="_blank"
-      >
-        Falar no WhatsApp
-      </a>
-    </nav>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+    </div>
 
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
   </div>
 
   <div class="mobile-menu" id="mobileMenu">
     <a href="#equipe" onclick="toggleMenu()">Vantagens</a>
     <a href="#funciona" onclick="toggleMenu()">Como Funciona</a>
     <a href="#precos" onclick="toggleMenu()">Planos</a>
-    
-    <a
-      href="https://wa.me/5521976675302?text=Oi%2C%20quero%20testar%20a%20Luni"
-      target="_blank"
-      class="mobile-highlight"
-    >
-      Testar no WhatsApp
-    </a>
+    <a href="#faq" onclick="toggleMenu()">Dúvidas</a>
 
     <a
       href="https://forms.gle/Q7pifwXB4TbuKWT4A"
       target="_blank"
       class="mobile-cta-final"
     >
-      Ativar Luni
+      ATIVAR LUNI AGORA 🚀
     </a>
   </div>
 </header>
@@ -146,7 +133,7 @@
                 <div class="v-icon-box">✅</div>
                 <div class="v-content">
                     <h3>3. Confirmação</h3>
-                    <p>O cliente escolhe, a Luni agende e já envia a confirmação.</p>
+                    <p>O cliente escolhe, a Luni agenda e já envia a confirmação.</p>
                 </div>
             </div>
 
@@ -233,6 +220,11 @@
             </div>
           </div>
         </div>
+
+        <div class="enterprise-note">
+            <p>🏢 <strong>Precisa de mais de 10 agendas?</strong> <a href="https://wa.me/5521976675302" target="_blank">Consulte nosso plano Enterprise.</a></p>
+        </div>
+
       </div>
     </section>
 
@@ -250,7 +242,7 @@
                         4 x R$ 150 = <span class="green-text">R$ 600,00 recuperados.</span>
                     </div>
                     
-                    <p class="roi-note">O plano Business (o mais completo) custa R$ 597.</p>
+                    <p class="roi-note">O plano Business custa R$ 597.</p>
 
                     <div class="roi-alert">
                         ✅ Com apenas 4 atendimentos salvos, o sistema sai <strong>DE GRAÇA.</strong>
@@ -318,7 +310,7 @@
     document.getElementById('mobileMenu').classList.toggle('open');
   }
   
-  // Fechar menu ao clicar em um link
+  // Fechar menu ao clicar
   document.querySelectorAll('.mobile-menu a').forEach(link => {
     link.addEventListener('click', () => {
         document.getElementById('mobileMenu').classList.remove('open');
