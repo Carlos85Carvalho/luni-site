@@ -8,28 +8,25 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<!-- NAVBAR -->
 <header class="navbar">
   <div class="container nav-content">
-
     <img src="logo-nova.jpg" alt="Luni Assistente Virtual" class="logo-img" />
 
-    <!-- MENU DESKTOP -->
     <nav class="nav-links">
       <a href="#solucao" class="nav-link">Como Funciona</a>
-      <a href="#beneficios" class="nav-link">Benefícios</a>
+      <a href="#precos" class="nav-link">Planos</a>
+      <a href="#faq" class="nav-link">Dúvidas</a>
 
       <a
         href="https://wa.me/5521976675302?text=Oi%2C%20quero%20testar%20a%20Luni"
         class="nav-link"
         target="_blank"
       >
-        Testar Luni
+        Testar Grátis
       </a>
 
       <a
@@ -37,27 +34,26 @@
         class="btn-nav"
         target="_blank"
       >
-        Ativar Luni
+        Começar Agora
       </a>
     </nav>
 
-    <!-- HAMBURGER MOBILE -->
     <div class="hamburger" onclick="toggleMenu()">
       ☰
     </div>
 
   </div>
 
-  <!-- MENU MOBILE -->
   <div class="mobile-menu" id="mobileMenu">
     <a href="#solucao" onclick="toggleMenu()">Como Funciona</a>
-    <a href="#beneficios" onclick="toggleMenu()">Benefícios</a>
-
+    <a href="#precos" onclick="toggleMenu()">Planos</a>
+    <a href="#faq" onclick="toggleMenu()">Dúvidas</a>
+    
     <a
       href="https://wa.me/5521976675302?text=Oi%2C%20quero%20testar%20a%20Luni"
       target="_blank"
     >
-      Testar Luni
+      Testar no WhatsApp
     </a>
 
     <a
@@ -70,17 +66,17 @@
   </div>
 </header>
 
-<!-- HERO -->
 <section class="hero">
   <div class="container">
+    <span class="badge">✨ Novidade: Atendimento 24h via WhatsApp</span>
     <h1>
       Sua Recepcionista Virtual com<br>
       <span class="gradient-text">Inteligência Artificial</span>
     </h1>
 
     <p>
-      Atenda, agende e confirme horários no WhatsApp 24h por dia.
-      Sem perder clientes e sem depender de ninguém.
+      Pare de perder clientes porque não conseguiu responder na hora. 
+      A Luni atende, tira dúvidas e agenda seus horários automaticamente.
     </p>
 
     <div class="hero-buttons">
@@ -89,85 +85,163 @@
         class="btn-primary btn-pulse"
         target="_blank"
       >
-        Testar Luni no WhatsApp
+        Testar Luni Agora
       </a>
+      <a href="#solucao" class="btn-secondary">Ver como funciona</a>
     </div>
   </div>
 </section>
 
-<!-- DOR -->
-<section>
-  <div class="container">
-    <h2>💸 Por Que Você Perde Dinheiro?</h2>
-
-    <div class="grid">
-      <div class="card">
-        <h3>⏳ Demora na Resposta</h3>
-        <p>Se você demora minutos para responder, o cliente fecha com outro.</p>
-      </div>
-
-      <div class="card">
-        <h3>🚫 No-Show</h3>
-        <p>O cliente esquece e sua cadeira fica vazia.</p>
-      </div>
-
-      <div class="card">
-        <h3>📅 Fora do Horário</h3>
-        <p>Seu negócio fecha, mas o cliente quer marcar agora.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- BENEFÍCIOS -->
-<section id="beneficios" class="section-light">
-  <div class="container">
-    <h2>🤖 Sua Nova Equipe Digital</h2>
-
-    <div class="grid">
-      <div class="card">⚡ Atendimento imediato</div>
-      <div class="card">📲 Agenda automática</div>
-      <div class="card">🔔 Confirmação inteligente</div>
-      <div class="card">🧠 IA humanizada</div>
-    </div>
-  </div>
-</section>
-
-<!-- COMO FUNCIONA -->
 <section id="solucao">
   <div class="container">
     <h2>Como a Luni Funciona</h2>
+    <p class="section-subtitle">Simples, rápido e sem complicações.</p>
 
     <div class="grid">
-      <div class="card">Cliente chama no WhatsApp</div>
-      <div class="card">Luni agenda</div>
-      <div class="card">Confirma automaticamente</div>
-      <div class="card">Você atende</div>
+      <div class="card-clean">
+        <div class="icon-box">💬</div>
+        <h3>1. Cliente Chama</h3>
+        <p>Seu cliente manda mensagem no WhatsApp querendo marcar um horário ou tirar dúvida.</p>
+      </div>
+
+      <div class="card-clean">
+        <div class="icon-box">🗓️</div>
+        <h3>2. Luni Agenda</h3>
+        <p>A IA verifica sua disponibilidade e oferece os horários livres na hora.</p>
+      </div>
+
+      <div class="card-clean">
+        <div class="icon-box">✅</div>
+        <h3>3. Confirmação</h3>
+        <p>O agendamento é feito e a Luni envia a confirmação automática para ambos.</p>
+      </div>
+
+      <div class="card-clean">
+        <div class="icon-box">⭐</div>
+        <h3>4. Você Atende</h3>
+        <p>Você recebe a notificação pronta e só se preocupa em realizar o serviço.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- CTA FINAL -->
-<section id="cta" class="cta">
+<section class="section-dark">
   <div class="container">
-    <h2>Pronto para parar de perder dinheiro?</h2>
-    <p>Ative agora sua assistente virtual configurada para o seu negócio.</p>
+    <h2>Por que você perde dinheiro hoje?</h2>
+    
+    <div class="grid-benefit">
+      <div class="benefit-item">
+        <div class="check-icon">✕</div>
+        <div>
+            <h3>Demora na Resposta</h3>
+            <p>Se você demora 10 minutos, o cliente fecha com o concorrente.</p>
+        </div>
+      </div>
 
-    <a
-      href="https://forms.gle/Q7pifwXB4TbuKWT4A"
-      class="btn-primary btn-pulse"
-      target="_blank"
-    >
-      Ativar Luni Agora
-    </a>
+      <div class="benefit-item">
+        <div class="check-icon">✕</div>
+        <div>
+            <h3>No-Show (Faltas)</h3>
+            <p>Sem lembretes automáticos, o cliente esquece e você fica com horário vago.</p>
+        </div>
+      </div>
+
+      <div class="benefit-item">
+        <div class="check-icon">✕</div>
+        <div>
+            <h3>Fora do Horário</h3>
+            <p>Clientes tentam marcar à noite ou domingo quando você está descansando.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<section id="precos" class="section-light">
+  <div class="container">
+    <h2>Planos que se pagam sozinhos</h2>
+    <p class="section-subtitle">Escolha o melhor para o seu momento.</p>
+
+    <div class="pricing-grid">
+      
+      <div class="pricing-card">
+        <h3>Autônomo</h3>
+        <p class="price">R$ 97<span>/mês</span></p>
+        <ul class="features">
+          <li>✓ Agendamento Automático</li>
+          <li>✓ 1 Atendente (Você)</li>
+          <li>✓ Link de WhatsApp Próprio</li>
+          <li>✓ Suporte por Email</li>
+        </ul>
+        <a href="#" class="btn-outline">Assinar Agora</a>
+      </div>
+
+      <div class="pricing-card featured">
+        <span class="tag">Mais Popular</span>
+        <h3>Profissional</h3>
+        <p class="price">R$ 197<span>/mês</span></p>
+        <ul class="features">
+          <li>✓ <strong>Tudo do Autônomo</strong></li>
+          <li>✓ Lembretes de Confirmação</li>
+          <li>✓ Respostas com IA Inteligente</li>
+          <li>✓ Relatório de Atendimentos</li>
+          <li>✓ Suporte Prioritário</li>
+        </ul>
+        <a href="#" class="btn-primary">Quero esse Plano</a>
+      </div>
+
+      <div class="pricing-card">
+        <h3>Empresarial</h3>
+        <p class="price">Consulte</p>
+        <ul class="features">
+          <li>✓ Múltiplos Atendentes</li>
+          <li>✓ Integração com CRM</li>
+          <li>✓ Treinamento Personalizado</li>
+          <li>✓ Gestor de Conta Dedicado</li>
+        </ul>
+        <a href="#" class="btn-outline">Falar com Consultor</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="container">
+    <h2>Dúvidas Frequentes</h2>
+    
+    <div class="faq-container">
+        
+      <details class="faq-item">
+        <summary>A Luni funciona 24 horas?</summary>
+        <p>Sim! A Luni fica conectada ao seu WhatsApp Business e responde seus clientes a qualquer hora do dia ou da noite, inclusive feriados.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Preciso saber programar?</summary>
+        <p>Não. Nós configuramos tudo para você. Você recebe o sistema pronto para usar.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Funciona no iPhone e Android?</summary>
+        <p>Sim, funciona em qualquer aparelho que tenha WhatsApp instalado.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Posso testar antes de pagar?</summary>
+        <p>Com certeza. Clique no botão de "Testar Luni" para ver ela funcionando na prática agora mesmo.</p>
+      </details>
+
+    </div>
+  </div>
+</section>
+
 <footer class="footer" id="contato">
   <div class="container">
-    <img src="logo-nova.jpg" alt="Luni" class="footer-logo" />
-
+    <h3>LUNI</h3>
+    <br>
+    <p>Sua agenda cheia, sem esforço.</p>
+    <br>
     <p><strong>WhatsApp:</strong> (22) 98124-2946</p>
     <p><strong>E-mail:</strong> contato@luni.ai</p>
 
@@ -177,7 +251,6 @@
   </div>
 </footer>
 
-<!-- SCRIPT -->
 <script>
   function toggleMenu() {
     document.getElementById('mobileMenu').classList.toggle('open');
