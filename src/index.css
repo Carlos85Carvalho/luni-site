@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+/* O VS Code pode marcar @theme como "Unknown at rule", mas para o Tailwind v4 isso é correto. 
+  Para o aviso sumir, você precisa da extensão "Tailwind CSS IntelliSense" instalada.
+*/
+@theme {
+  --color-primary-brand: #7B4DFF;
+  --color-tech-blue: #4F8CFF;
+  --color-highlight-pink: #FF4DA6;
+  --color-growth-green: #10B981;
+  --color-secondary-bg: #121826;
+  --color-background: #0F1020;
+
+  --font-sora: "Sora", sans-serif;
+  --font-inter: "Inter", sans-serif;
+}
+
+:root {
+  background-color: #0F1020;
+  color: white;
+  font-family: "Inter", sans-serif;
+}
+
+/* Fundo de Grade Tecnológica do Figma */
+.bg-circuit {
+  background-image: 
+    linear-gradient(rgba(123, 77, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(123, 77, 255, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Corrigindo o erro de 'background-clip' apontado pelo VS Code */
+.text-gradient {
+  background: linear-gradient(135deg, #7B4DFF 0%, #4F8CFF 50%, #FF4DA6 100%);
+  -webkit-background-clip: text;
+  background-clip: text; /* <--- Adicionado para compatibilidade padrão */
+  -webkit-text-fill-color: transparent;
+}
