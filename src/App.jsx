@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Importando o roteador
+import { HashRouter as Router, Routes, Route } from 'react-router-dom'; // 🟢 Mudamos para HashRouter
 import Header from './Header';
 import Hero from './Hero';
 import InfrastructureStats from './InfrastructureStats'; 
@@ -7,7 +7,7 @@ import DifferenceSection from './DifferenceSection';
 import StrategicConsulting from './StrategicConsulting';
 import PricingSection from './PricingSection';
 import Footer from './Footer';
-import TermosDeUso from './TermosDeUso'; // Importe o componente que criamos
+import TermosDeUso from './TermosDeUso'; 
 
 // Criamos um componente para a Home para organizar o código
 const Home = () => (
