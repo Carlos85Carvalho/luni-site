@@ -295,7 +295,7 @@ export default function CheckoutForm({ planoSelecionado, fecharFormulario }) {
                 )}
               </div>
 
-              {/* CAIXA DE TERMOS DE ACEITE (LINK EXTERNO) */}
+              {/* CAIXA DE TERMOS DE ACEITE (LINK EXTERNO AJUSTADO) */}
               <div className="mb-6">
                 <label className={`flex items-start gap-4 p-5 rounded-xl cursor-pointer border transition-all ${termosAceitos ? 'bg-primary-brand/10 border-primary-brand/30' : 'bg-black/20 border-white/10 hover:bg-white/5'}`}>
                   <div className="relative flex items-center justify-center mt-0.5">
@@ -312,7 +312,7 @@ export default function CheckoutForm({ planoSelecionado, fecharFormulario }) {
                   <span className="text-sm text-gray-400 leading-relaxed">
                     Li e concordo com os{' '}
                     <a 
-                      href="/termos" 
+                      href="#/termos" 
                       target="_blank" 
                       rel="noopener noreferrer" 
                       className="text-primary-brand font-bold hover:underline"
