@@ -149,7 +149,7 @@ export default function CheckoutForm({ planoSelecionado, fecharFormulario }) {
                     <span>Código do Consultor</span>
                     <span className="text-white/30 text-[10px] normal-case">(Opcional)</span>
                   </label>
-                  <input name="consultor" type="text" className="input-field placeholder:text-white/20" placeholder="Ex: Nome do Vendedor" onChange={handleChange} />
+                  <input name="consultor" type="text" className="input-field placeholder:text-white/20" placeholder="Ex: 001" onChange={handleChange} />
                 </div>
               </div>
             </div>
