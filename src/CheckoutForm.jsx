@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 export default function CheckoutForm({ planoSelecionado, fecharFormulario }) {
   const [loading, setLoading] = useState(false);
   const [termosAceitos, setTermosAceitos] = useState(false);
+  const [erros, setErros] = useState({}); // Novo: Estado para controlar erros
   
   const [dados, setDados] = useState({
     nome: '',
@@ -34,6 +35,21 @@ export default function CheckoutForm({ planoSelecionado, fecharFormulario }) {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setDados({ ...dados, [name]: value });
+
+    // Limpa o erro do CPF/CNPJ assim que o usuário volta a digitar
+    if (name === 'cpfCnpj' && erros.cpfCnpj) {
+      setErros({ ...erros, cpfCnpj: false });
+    }
+  };
+
+  // Novo: Validação básica de CPF/CNPJ
+  const validarDocumento = () => {
+    const numeros = dados.cpfCnpj.replace(/\D/g, ''); // Tira pontos e traços
+    if (numeros.length !== 11 && numeros.length !== 14 && numeros.length > 0) {
+      setErros({ ...erros, cpfCnpj: true });
+    } else {
+      setErros({ ...erros, cpfCnpj: false });
+    }
   };
 
   const handleCepBlur = async (e) => {
@@ -73,6 +89,13 @@ export default function CheckoutForm({ planoSelecionado, fecharFormulario }) {
     
     if (!termosAceitos) {
       return alert("⚠️ É obrigatório ler e aceitar os Termos e Condições de Uso.");
+    }
+
+    // Trava o envio se o documento estiver errado
+    const numerosDoc = dados.cpfCnpj.replace(/\D/g, '');
+    if (numerosDoc.length !== 11 && numerosDoc.length !== 14) {
+      setErros({ ...erros, cpfCnpj: true });
+      return alert("⚠️ Por favor, verifique o número do CPF ou CNPJ.");
     }
 
     setLoading(true);
@@ -145,7 +168,14 @@ export default function CheckoutForm({ planoSelecionado, fecharFormulario }) {
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div><label className="label-text">Nome Completo</label><input required name="nome" type="text" className="input-field" onChange={handleChange} /></div>
-                <div><label className="label-text">WhatsApp</label><input required name="whatsapp" type="tel" className="input-field" onChange={handleChange} /></div>
+                
+                {/* WHATSAPP AJUSTADO AQUI */}
+                <div>
+                  <label className="label-text">WhatsApp (Recepcionista / Robô)</label>
+                  <input required name="whatsapp" type="tel" className="input-field" placeholder="Ex: (11) 90000-0000" onChange={handleChange} />
+                  <p className="text-[10px] text-white/40 mt-1 ml-1">*O número que a Luni irá usar para atender seus clientes.</p>
+                </div>
+
                 <div><label className="label-text">E-mail</label><input required name="email" type="email" className="input-field" onChange={handleChange} /></div>
                 <div><label className="label-text">Consultor (Opcional)</label><input name="consultor" type="text" className="input-field" onChange={handleChange} /></div>
               </div>
@@ -160,7 +190,27 @@ export default function CheckoutForm({ planoSelecionado, fecharFormulario }) {
               <div className="grid grid-cols-1 md:grid-cols-6 gap-6">
                 <div className="md:col-span-3"><label className="label-text">Razão Social</label><input required name="razaoSocial" type="text" className="input-field" onChange={handleChange} /></div>
                 <div className="md:col-span-3"><label className="label-text">Nome Fantasia</label><input required name="nomeFantasia" type="text" className="input-field" onChange={handleChange} /></div>
-                <div className="md:col-span-2"><label className="label-text">CPF ou CNPJ</label><input required name="cpfCnpj" type="text" className="input-field" onChange={handleChange} /></div>
+                
+                {/* DOCUMENTO COM VALIDAÇÃO E X VERMELHO */}
+                <div className="md:col-span-2 relative">
+                  <label className="label-text flex justify-between">
+                    CPF ou CNPJ 
+                    {erros.cpfCnpj && <span className="text-red-500 text-[10px] font-bold">Inválido!</span>}
+                  </label>
+                  <input 
+                    required 
+                    name="cpfCnpj" 
+                    type="text" 
+                    className={`input-field pr-10 ${erros.cpfCnpj ? 'border-red-500 focus:border-red-500 bg-red-500/5' : ''}`} 
+                    onChange={handleChange} 
+                    onBlur={validarDocumento}
+                    placeholder="Apenas números"
+                  />
+                  {erros.cpfCnpj && (
+                    <div className="absolute right-3 top-[34px] text-red-500 font-bold select-none">❌</div>
+                  )}
+                </div>
+
                 <div className="md:col-span-2"><label className="label-text">Ramo</label><input required name="ramo" type="text" className="input-field" onChange={handleChange} /></div>
                 <div className="md:col-span-2"><label className="label-text">Qtd. Profissionais</label><input required name="qtdProfissionais" type="number" className="input-field" onChange={handleChange} /></div>
                 
@@ -168,7 +218,9 @@ export default function CheckoutForm({ planoSelecionado, fecharFormulario }) {
                   <label className="label-text">CEP</label>
                   <input required name="cep" type="text" className="input-field" placeholder="00000-000" onBlur={handleCepBlur} onChange={handleChange} />
                 </div>
-                <div className="md:col-span-3"><label className="label-text">Rua/Av</label><input required name="logradouro" value={dados.logradouro} type="text" className="input-field" onChange={handleChange} /></div>
+                
+                {/* RUA / AV MUDADO PARA LOGRADOURO */}
+                <div className="md:col-span-3"><label className="label-text">Endereço / Logradouro</label><input required name="logradouro" value={dados.logradouro} type="text" className="input-field" onChange={handleChange} /></div>
                 <div className="md:col-span-1"><label className="label-text">Nº</label><input required name="numero" type="text" className="input-field" onChange={handleChange} /></div>
                 <div className="md:col-span-2"><label className="label-text">Bairro</label><input required name="bairro" value={dados.bairro} type="text" className="input-field" onChange={handleChange} /></div>
                 <div className="md:col-span-3"><label className="label-text">Cidade</label><input required name="cidade" value={dados.cidade} type="text" className="input-field" onChange={handleChange} /></div>
@@ -262,6 +314,9 @@ export default function CheckoutForm({ planoSelecionado, fecharFormulario }) {
         .input-field:focus { border-color: #00E599; background-color: rgba(0, 229, 153, 0.05); }
         .text-primary-brand { color: #00E599; }
         .bg-primary-brand { background-color: #00E599; }
+        
+        /* NOVO: Força o fundo escuro nas opções de Dropdown/Select */
+        select.input-field option { background-color: #11121c; color: #ffffff; padding: 10px; }
       `}</style>
     </div>
   );
