@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 export default function CheckoutForm({ planoSelecionado, fecharFormulario }) {
   const [loading, setLoading] = useState(false);
   const [termosAceitos, setTermosAceitos] = useState(false);
-  const [erros, setErros] = useState({}); // Novo: Estado para controlar erros
+  const [erros, setErros] = useState({});
+  const [qrCodeBase64, setQrCodeBase64] = useState(null); // NOVO: Guarda a imagem do QR Code
   
   const [dados, setDados] = useState({
     nome: '',
@@ -35,16 +36,11 @@ export default function CheckoutForm({ planoSelecionado, fecharFormulario }) {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setDados({ ...dados, [name]: value });
-
-    // Limpa o erro do CPF/CNPJ assim que o usuário volta a digitar
-    if (name === 'cpfCnpj' && erros.cpfCnpj) {
-      setErros({ ...erros, cpfCnpj: false });
-    }
+    if (name === 'cpfCnpj' && erros.cpfCnpj) setErros({ ...erros, cpfCnpj: false });
   };
 
-  // Novo: Validação básica de CPF/CNPJ
   const validarDocumento = () => {
-    const numeros = dados.cpfCnpj.replace(/\D/g, ''); // Tira pontos e traços
+    const numeros = dados.cpfCnpj.replace(/\D/g, '');
     if (numeros.length !== 11 && numeros.length !== 14 && numeros.length > 0) {
       setErros({ ...erros, cpfCnpj: true });
     } else {
@@ -55,18 +51,12 @@ export default function CheckoutForm({ planoSelecionado, fecharFormulario }) {
   const handleCepBlur = async (e) => {
     const cep = e.target.value.replace(/\D/g, '');
     if (cep.length !== 8) return;
-
     try {
       const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
       const data = await response.json();
-
       if (!data.erro) {
         setDados(prev => ({
-          ...prev,
-          logradouro: data.logradouro,
-          bairro: data.bairro,
-          cidade: data.localidade,
-          estado: data.uf
+          ...prev, logradouro: data.logradouro, bairro: data.bairro, cidade: data.localidade, estado: data.uf
         }));
         document.getElementsByName('numero')[0]?.focus();
       }
@@ -86,12 +76,8 @@ export default function CheckoutForm({ planoSelecionado, fecharFormulario }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (!termosAceitos) return alert("⚠️ É obrigatório ler e aceitar os Termos e Condições de Uso.");
     
-    if (!termosAceitos) {
-      return alert("⚠️ É obrigatório ler e aceitar os Termos e Condições de Uso.");
-    }
-
-    // Trava o envio se o documento estiver errado
     const numerosDoc = dados.cpfCnpj.replace(/\D/g, '');
     if (numerosDoc.length !== 11 && numerosDoc.length !== 14) {
       setErros({ ...erros, cpfCnpj: true });
@@ -106,9 +92,7 @@ export default function CheckoutForm({ planoSelecionado, fecharFormulario }) {
         const ipResponse = await fetch('https://api.ipify.org?format=json');
         const ipData = await ipResponse.json();
         ipUsuario = ipData.ip;
-      } catch (ipError) {
-        console.log("Não foi possível capturar o IP:", ipError);
-      }
+      } catch (ipError) {}
 
       const webhookURL = "https://n8n.souluni.cloud/webhook/luni/novo-contrato";
 
@@ -129,7 +113,13 @@ export default function CheckoutForm({ planoSelecionado, fecharFormulario }) {
 
       if (response.ok) {
         const respostaN8n = await response.json();
-        if (respostaN8n.invoiceUrl) {
+        
+        // 🚨 A MÁGICA ACONTECE AQUI:
+        // Se o n8n devolver o base64, nós mostramos o QR Code na tela!
+        if (respostaN8n.base64) {
+          setQrCodeBase64(respostaN8n.base64);
+        } 
+        else if (respostaN8n.invoiceUrl) {
           window.location.href = respostaN8n.invoiceUrl;
         } else {
           alert("Cadastro realizado! Verifique seu WhatsApp.");
@@ -139,13 +129,38 @@ export default function CheckoutForm({ planoSelecionado, fecharFormulario }) {
         alert("Erro no servidor. Tente novamente.");
       }
     } catch (error) {
-      console.error("Erro na submissão:", error);
       alert("Erro de conexão.");
     } finally {
       setLoading(false);
     }
   };
 
+  // 🎨 TELA DE SUCESSO E QR CODE
+  if (qrCodeBase64) {
+    return (
+      <div className="fixed inset-0 z-50 bg-[#0A0B14] flex justify-center items-center p-4">
+        <div className="bg-[#11121c] p-8 rounded-3xl max-w-md w-full text-center border border-[#00E599]/30 shadow-[0_0_50px_rgba(0,229,153,0.1)]">
+          <h2 className="text-3xl font-bold text-white mb-2 font-sora">Tudo Pronto! 🎉</h2>
+          <p className="text-white/70 mb-6 text-sm">Seu sistema foi criado. Para a Luni começar a trabalhar, aponte o WhatsApp do seu salão para o QR Code abaixo:</p>
+          
+          <div className="bg-white p-4 rounded-2xl inline-block mb-6">
+             <img src={qrCodeBase64} alt="QR Code WhatsApp" className="w-56 h-56 object-contain" />
+          </div>
+
+          <div className="bg-[#00E599]/10 border border-[#00E599]/20 p-4 rounded-xl mb-6">
+            <p className="text-xs text-[#00E599] font-bold">⚠️ FATURA DE ATIVAÇÃO ENVIADA</p>
+            <p className="text-[11px] text-gray-400 mt-1">Verifique seu e-mail e WhatsApp para realizar o pagamento e liberar seu acesso ao painel.</p>
+          </div>
+
+          <button onClick={fecharFormulario} className="w-full bg-[#00E599] hover:bg-[#00E599]/90 text-black font-extrabold py-4 rounded-xl transition-all uppercase tracking-wider">
+            Concluir e Fechar
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  // TELA DO FORMULÁRIO NORMAL (Pode manter o resto igual estava)
   return (
     <div className="fixed inset-0 z-50 bg-[#0A0B14] overflow-y-auto">
       <div className="min-h-screen py-12 px-4 md:px-8 flex justify-center">
@@ -155,71 +170,48 @@ export default function CheckoutForm({ planoSelecionado, fecharFormulario }) {
 
           <div className="text-center mb-12 mt-4">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-2 font-sora">Finalizar Contratação</h2>
-            <p className="text-white/60 text-lg">Plano <span className="text-primary-brand font-bold uppercase">{planoSelecionado}</span></p>
+            <p className="text-white/60 text-lg">Plano <span className="text-[#00E599] font-bold uppercase">{planoSelecionado}</span></p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-10">
             
-            {/* 1. DADOS DO RESPONSÁVEL */}
             <div className="space-y-6">
               <h3 className="text-xl text-white font-bold border-b border-white/10 pb-4 flex items-center gap-2">
-                <span className="bg-primary-brand text-black w-6 h-6 rounded-full flex items-center justify-center text-xs">1</span>
+                <span className="bg-[#00E599] text-black w-6 h-6 rounded-full flex items-center justify-center text-xs">1</span>
                 Dados do Responsável
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div><label className="label-text">Nome Completo</label><input required name="nome" type="text" className="input-field" onChange={handleChange} /></div>
-                
-                {/* WHATSAPP AJUSTADO AQUI */}
                 <div>
                   <label className="label-text">WhatsApp (Recepcionista / Robô)</label>
                   <input required name="whatsapp" type="tel" className="input-field" placeholder="Ex: (11) 90000-0000" onChange={handleChange} />
                   <p className="text-[10px] text-white/40 mt-1 ml-1">*O número que a Luni irá usar para atender seus clientes.</p>
                 </div>
-
                 <div><label className="label-text">E-mail</label><input required name="email" type="email" className="input-field" onChange={handleChange} /></div>
                 <div><label className="label-text">Consultor (Opcional)</label><input name="consultor" type="text" className="input-field" onChange={handleChange} /></div>
               </div>
             </div>
 
-            {/* 2. DADOS DA EMPRESA E ENDEREÇO INTELIGENTE */}
             <div className="space-y-6">
               <h3 className="text-xl text-white font-bold border-b border-white/10 pb-4 flex items-center gap-2">
-                <span className="bg-primary-brand text-black w-6 h-6 rounded-full flex items-center justify-center text-xs">2</span>
+                <span className="bg-[#00E599] text-black w-6 h-6 rounded-full flex items-center justify-center text-xs">2</span>
                 Dados da Empresa
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-6 gap-6">
                 <div className="md:col-span-3"><label className="label-text">Razão Social</label><input required name="razaoSocial" type="text" className="input-field" onChange={handleChange} /></div>
                 <div className="md:col-span-3"><label className="label-text">Nome Fantasia</label><input required name="nomeFantasia" type="text" className="input-field" onChange={handleChange} /></div>
                 
-                {/* DOCUMENTO COM VALIDAÇÃO E X VERMELHO */}
                 <div className="md:col-span-2 relative">
                   <label className="label-text flex justify-between">
-                    CPF ou CNPJ 
-                    {erros.cpfCnpj && <span className="text-red-500 text-[10px] font-bold">Inválido!</span>}
+                    CPF ou CNPJ {erros.cpfCnpj && <span className="text-red-500 text-[10px] font-bold">Inválido!</span>}
                   </label>
-                  <input 
-                    required 
-                    name="cpfCnpj" 
-                    type="text" 
-                    className={`input-field pr-10 ${erros.cpfCnpj ? 'border-red-500 focus:border-red-500 bg-red-500/5' : ''}`} 
-                    onChange={handleChange} 
-                    onBlur={validarDocumento}
-                    placeholder="Apenas números"
-                  />
-                  {erros.cpfCnpj && (
-                    <div className="absolute right-3 top-[34px] text-red-500 font-bold select-none">❌</div>
-                  )}
+                  <input required name="cpfCnpj" type="text" className={`input-field pr-10 ${erros.cpfCnpj ? 'border-red-500 bg-red-500/5' : ''}`} onChange={handleChange} onBlur={validarDocumento} placeholder="Apenas números"/>
+                  {erros.cpfCnpj && <div className="absolute right-3 top-[34px] text-red-500 font-bold select-none">❌</div>}
                 </div>
 
                 <div className="md:col-span-2"><label className="label-text">Ramo</label><input required name="ramo" type="text" className="input-field" onChange={handleChange} /></div>
                 <div className="md:col-span-2"><label className="label-text">Qtd. Profissionais</label><input required name="qtdProfissionais" type="number" className="input-field" onChange={handleChange} /></div>
-                
-                <div className="md:col-span-2">
-                  <label className="label-text">CEP</label>
-                  <input required name="cep" type="text" className="input-field" placeholder="00000-000" onBlur={handleCepBlur} onChange={handleChange} />
-                </div>
-                
-                {/* RUA / AV MUDADO PARA LOGRADOURO */}
+                <div className="md:col-span-2"><label className="label-text">CEP</label><input required name="cep" type="text" className="input-field" placeholder="00000-000" onBlur={handleCepBlur} onChange={handleChange} /></div>
                 <div className="md:col-span-3"><label className="label-text">Endereço / Logradouro</label><input required name="logradouro" value={dados.logradouro} type="text" className="input-field" onChange={handleChange} /></div>
                 <div className="md:col-span-1"><label className="label-text">Nº</label><input required name="numero" type="text" className="input-field" onChange={handleChange} /></div>
                 <div className="md:col-span-2"><label className="label-text">Bairro</label><input required name="bairro" value={dados.bairro} type="text" className="input-field" onChange={handleChange} /></div>
@@ -228,17 +220,13 @@ export default function CheckoutForm({ planoSelecionado, fecharFormulario }) {
               </div>
             </div>
 
-            {/* 3. FUNCIONAMENTO */}
             <div className="space-y-6">
               <h3 className="text-xl text-white font-bold border-b border-white/10 pb-4 flex items-center gap-2">
-                <span className="bg-primary-brand text-black w-6 h-6 rounded-full flex items-center justify-center text-xs">3</span>
+                <span className="bg-[#00E599] text-black w-6 h-6 rounded-full flex items-center justify-center text-xs">3</span>
                 Funcionamento
               </h3>
               <div className="space-y-6">
-                <div>
-                  <label className="label-text">Horário de Atendimento</label>
-                  <input required name="horarioAtendimento" type="text" className="input-field" placeholder="Ex: Seg a Sex 09h às 19h" onChange={handleChange} />
-                </div>
+                <div><label className="label-text">Horário de Atendimento</label><input required name="horarioAtendimento" type="text" className="input-field" placeholder="Ex: Seg a Sex 09h às 19h" onChange={handleChange} /></div>
                 <div>
                   <label className="label-text mb-3 block">Dias que o salão <span className="text-red-400">NÃO</span> abre:</label>
                   <div className="flex flex-wrap gap-3">
@@ -253,10 +241,9 @@ export default function CheckoutForm({ planoSelecionado, fecharFormulario }) {
               </div>
             </div>
 
-            {/* 4. RECEPCIONISTA VIRTUAL */}
             <div className="space-y-6">
               <h3 className="text-xl text-white font-bold border-b border-white/10 pb-4 flex items-center gap-2">
-                <span className="bg-primary-brand text-black w-6 h-6 rounded-full flex items-center justify-center text-xs">4</span>
+                <span className="bg-[#00E599] text-black w-6 h-6 rounded-full flex items-center justify-center text-xs">4</span>
                 Sua Recepcionista Virtual
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -272,8 +259,7 @@ export default function CheckoutForm({ planoSelecionado, fecharFormulario }) {
               </div>
             </div>
 
-            {/* 5. PAGAMENTO E TERMOS */}
-            <div className="bg-gradient-to-br from-primary-brand/5 to-transparent p-6 md:p-8 rounded-2xl border border-primary-brand/20">
+            <div className="bg-gradient-to-br from-[#00E599]/5 to-transparent p-6 md:p-8 rounded-2xl border border-[#00E599]/20">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                 <div>
                   <label className="label-text">Forma de Pagamento</label>
@@ -294,13 +280,13 @@ export default function CheckoutForm({ planoSelecionado, fecharFormulario }) {
               </div>
 
               <div className="mb-6">
-                <label className={`flex items-start gap-4 p-5 rounded-xl cursor-pointer border transition-all ${termosAceitos ? 'bg-primary-brand/10 border-primary-brand/30' : 'bg-black/20 border-white/10'}`}>
+                <label className={`flex items-start gap-4 p-5 rounded-xl cursor-pointer border transition-all ${termosAceitos ? 'bg-[#00E599]/10 border-[#00E599]/30' : 'bg-black/20 border-white/10'}`}>
                   <input type="checkbox" className="mt-1" checked={termosAceitos} onChange={(e) => setTermosAceitos(e.target.checked)} />
-                  <span className="text-sm text-gray-400">Li e concordo com os <a href="#/termos" target="_blank" className="text-primary-brand font-bold underline">Termos e Condições de Uso</a> da Luni IA.</span>
+                  <span className="text-sm text-gray-400">Li e concordo com os <a href="#/termos" target="_blank" className="text-[#00E599] font-bold underline">Termos e Condições de Uso</a> da Luni IA.</span>
                 </label>
               </div>
 
-              <button type="submit" disabled={loading} className="w-full bg-primary-brand hover:bg-primary-brand/90 text-black font-extrabold py-5 text-lg rounded-xl transition-all uppercase tracking-wider">
+              <button type="submit" disabled={loading} className="w-full bg-[#00E599] hover:bg-[#00E599]/90 text-black font-extrabold py-5 text-lg rounded-xl transition-all uppercase tracking-wider">
                 {loading ? 'Processando Contrato...' : 'Gerar Pagamento e Acessar 🚀'}
               </button>
             </div>
@@ -312,10 +298,6 @@ export default function CheckoutForm({ planoSelecionado, fecharFormulario }) {
         .label-text { display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: rgba(255,255,255,0.5); margin-bottom: 0.35rem; font-weight: 700; }
         .input-field { width: 100%; background-color: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 0.5rem; padding: 0.875rem; color: white; outline: none; transition: all 0.2s; font-size: 1rem; }
         .input-field:focus { border-color: #00E599; background-color: rgba(0, 229, 153, 0.05); }
-        .text-primary-brand { color: #00E599; }
-        .bg-primary-brand { background-color: #00E599; }
-        
-        /* NOVO: Força o fundo escuro nas opções de Dropdown/Select */
         select.input-field option { background-color: #11121c; color: #ffffff; padding: 10px; }
       `}</style>
     </div>
