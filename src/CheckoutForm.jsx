@@ -4,7 +4,7 @@ export default function CheckoutForm({ planoSelecionado, fecharFormulario }) {
   const [loading, setLoading] = useState(false);
   const [termosAceitos, setTermosAceitos] = useState(false);
   const [erros, setErros] = useState({});
-  const [qrCodeBase64, setQrCodeBase64] = useState(null); // NOVO: Guarda a imagem do QR Code
+  const [qrCodeBase64, setQrCodeBase64] = useState(null); 
   
   const [dados, setDados] = useState({
     nome: '',
@@ -22,6 +22,7 @@ export default function CheckoutForm({ planoSelecionado, fecharFormulario }) {
     estado: '',
     ramo: '',
     qtdProfissionais: '',
+    linkGoogle: '', // 🚀 NOVO ESTADO AQUI
     horarioAtendimento: '',
     diasFechados: [],
     nomeBot: '',
@@ -114,8 +115,6 @@ export default function CheckoutForm({ planoSelecionado, fecharFormulario }) {
       if (response.ok) {
         const respostaN8n = await response.json();
         
-        // 🚨 A MÁGICA ACONTECE AQUI:
-        // Se o n8n devolver o base64, nós mostramos o QR Code na tela!
         if (respostaN8n.base64) {
           setQrCodeBase64(respostaN8n.base64);
         } 
@@ -135,7 +134,6 @@ export default function CheckoutForm({ planoSelecionado, fecharFormulario }) {
     }
   };
 
-  // 🎨 TELA DE SUCESSO E QR CODE
   if (qrCodeBase64) {
     return (
       <div className="fixed inset-0 z-50 bg-[#0A0B14] flex justify-center items-center p-4">
@@ -160,7 +158,6 @@ export default function CheckoutForm({ planoSelecionado, fecharFormulario }) {
     );
   }
 
-  // TELA DO FORMULÁRIO NORMAL (Pode manter o resto igual estava)
   return (
     <div className="fixed inset-0 z-50 bg-[#0A0B14] overflow-y-auto">
       <div className="min-h-screen py-12 px-4 md:px-8 flex justify-center">
@@ -211,6 +208,14 @@ export default function CheckoutForm({ planoSelecionado, fecharFormulario }) {
 
                 <div className="md:col-span-2"><label className="label-text">Ramo</label><input required name="ramo" type="text" className="input-field" onChange={handleChange} /></div>
                 <div className="md:col-span-2"><label className="label-text">Qtd. Profissionais</label><input required name="qtdProfissionais" type="number" className="input-field" onChange={handleChange} /></div>
+                
+                {/* 🚀 O NOVO CAMPO DE GOOGLE ESTÁ AQUI */}
+                <div className="md:col-span-6">
+                  <label className="label-text">Link de Avaliação do Google Meu Negócio (Opcional)</label>
+                  <input name="linkGoogle" type="url" className="input-field" placeholder="Ex: https://g.page/r/sua-empresa/review" onChange={handleChange} />
+                  <p className="text-[10px] text-[#00E599] mt-1.5 ml-1 font-medium">*A IA usará este link para pedir avaliações automáticas 5 estrelas após bons atendimentos.</p>
+                </div>
+
                 <div className="md:col-span-2"><label className="label-text">CEP</label><input required name="cep" type="text" className="input-field" placeholder="00000-000" onBlur={handleCepBlur} onChange={handleChange} /></div>
                 <div className="md:col-span-3"><label className="label-text">Endereço / Logradouro</label><input required name="logradouro" value={dados.logradouro} type="text" className="input-field" onChange={handleChange} /></div>
                 <div className="md:col-span-1"><label className="label-text">Nº</label><input required name="numero" type="text" className="input-field" onChange={handleChange} /></div>
