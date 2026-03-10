@@ -9,7 +9,7 @@ import PricingSection from './PricingSection';
 import Footer from './Footer';
 import TermosDeUso from './TermosDeUso'; 
 import TesteGratis from './TesteGratis';
-import LuniChatWidget from './LuniChatWidget'; // 🟢 WIDGET FLUTUANTE
+import LuniChatWidget from './LuniChatWidget';
 
 const Home = () => (
   <>
@@ -30,18 +30,13 @@ function App() {
   return (
     <Router>
       <div className="w-full min-h-screen bg-background text-white selection:bg-primary-brand/30 overflow-x-hidden bg-circuit font-inter">
-        
         <Header />
-
         <Routes>
-          <Route path="/"             element={<Home />} />
-          <Route path="/termos"       element={<TermosDeUso />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/termos" element={<TermosDeUso />} />
           <Route path="/teste-gratis" element={<TesteGratis />} />
         </Routes>
-
-        {/* 🟢 Widget flutuante — aparece em TODAS as páginas */}
         <LuniChatWidget />
-        
       </div>
     </Router>
   );
