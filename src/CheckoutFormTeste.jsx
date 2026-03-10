@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
-export default function CheckoutForm({ planoSelecionado, fecharFormulario }) {
+export default function CheckoutFormTeste({ planoSelecionado, fecharFormulario }) {
   const [loading, setLoading] = useState(false);
   const [termosAceitos, setTermosAceitos] = useState(false);
   const [erros, setErros] = useState({});
-  const [qrCodeBase64, setQrCodeBase64] = useState(null); 
-  
+  const [qrCodeBase64, setQrCodeBase64] = useState(null);
+
   const [dados, setDados] = useState({
     nome: '',
     whatsapp: '',
@@ -27,9 +27,7 @@ export default function CheckoutForm({ planoSelecionado, fecharFormulario }) {
     diasFechados: [],
     nomeBot: '',
     tomBot: 'Simpática e acolhedora',
-    usaEmojis: 'Sim',
-    formaPagamento: 'PIX',
-    parcelas: '1'
+    usaEmojis: 'Sim'
   });
 
   const diasSemana = ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'];
@@ -69,8 +67,8 @@ export default function CheckoutForm({ planoSelecionado, fecharFormulario }) {
   const handleCheckboxChange = (dia) => {
     setDados(prev => {
       const dias = prev.diasFechados.includes(dia)
-        ? prev.diasFechados.filter(d => d !== dia) 
-        : [...prev.diasFechados, dia]; 
+        ? prev.diasFechados.filter(d => d !== dia)
+        : [...prev.diasFechados, dia];
       return { ...prev, diasFechados: dias };
     });
   };
@@ -78,7 +76,7 @@ export default function CheckoutForm({ planoSelecionado, fecharFormulario }) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!termosAceitos) return alert("⚠️ É obrigatório ler e aceitar os Termos e Condições de Uso.");
-    
+
     const numerosDoc = dados.cpfCnpj.replace(/\D/g, '');
     if (numerosDoc.length !== 11 && numerosDoc.length !== 14) {
       setErros({ ...erros, cpfCnpj: true });
@@ -95,11 +93,14 @@ export default function CheckoutForm({ planoSelecionado, fecharFormulario }) {
         ipUsuario = ipData.ip;
       } catch (ipError) {}
 
-      const webhookURL = "https://n8n.souluni.cloud/webhook/luni/novo-contrato";
+      // 🔴 AQUÍ FICA A ROTA DO WEBHOOK NOVA DO N8N
+      const webhookURL = "https://n8n.souluni.cloud/webhook/luni/novo-teste-gratis";
 
       const pacoteFinal = {
         ...dados,
         plano: planoSelecionado,
+        tipo: 'teste',                          // ← identifica que é o fluxo de teste
+        cobranca: 'dia_8',                      // ← sinaliza para o backend cobrar apenas no Dia 8
         consultor: dados.consultor || 'Venda Orgânica (Site)',
         termos_aceitos: true,
         ip_aceite: ipUsuario,
@@ -114,12 +115,10 @@ export default function CheckoutForm({ planoSelecionado, fecharFormulario }) {
 
       if (response.ok) {
         const respostaN8n = await response.json();
-        
+
+        // No fluxo de Teste, o n8n vai devolver apenas o QR Code (base64)
         if (respostaN8n.base64) {
           setQrCodeBase64(respostaN8n.base64);
-        } 
-        else if (respostaN8n.invoiceUrl) {
-          window.location.href = respostaN8n.invoiceUrl;
         } else {
           alert("Cadastro realizado! Verifique seu WhatsApp.");
           fecharFormulario();
@@ -140,14 +139,14 @@ export default function CheckoutForm({ planoSelecionado, fecharFormulario }) {
         <div className="bg-[#11121c] p-8 rounded-3xl max-w-md w-full text-center border border-[#00E599]/30 shadow-[0_0_50px_rgba(0,229,153,0.1)]">
           <h2 className="text-3xl font-bold text-white mb-2 font-sora">Tudo Pronto! 🎉</h2>
           <p className="text-white/70 mb-6 text-sm">Seu sistema foi criado. Para a Luni começar a trabalhar, aponte o WhatsApp do seu salão para o QR Code abaixo:</p>
-          
+
           <div className="bg-white p-4 rounded-2xl inline-block mb-6">
-             <img src={qrCodeBase64} alt="QR Code WhatsApp" className="w-56 h-56 object-contain" />
+            <img src={qrCodeBase64} alt="QR Code WhatsApp" className="w-56 h-56 object-contain" />
           </div>
 
           <div className="bg-[#00E599]/10 border border-[#00E599]/20 p-4 rounded-xl mb-6">
-            <p className="text-xs text-[#00E599] font-bold">⚠️ FATURA DE ATIVAÇÃO ENVIADA</p>
-            <p className="text-[11px] text-gray-400 mt-1">Verifique seu e-mail e WhatsApp para realizar o pagamento e liberar seu acesso ao painel.</p>
+            <p className="text-xs text-[#00E599] font-bold">✅ TESTE GRATUITO ATIVADO</p>
+            <p className="text-[11px] text-gray-400 mt-1">Seu cartão <strong>não será cobrado agora</strong>. A taxa de implantação só será debitada no <strong>Dia 8</strong>, caso você decida continuar.</p>
           </div>
 
           <button onClick={fecharFormulario} className="w-full bg-[#00E599] hover:bg-[#00E599]/90 text-black font-extrabold py-4 rounded-xl transition-all uppercase tracking-wider">
@@ -162,19 +161,28 @@ export default function CheckoutForm({ planoSelecionado, fecharFormulario }) {
     <div className="fixed inset-0 z-50 bg-[#0A0B14] overflow-y-auto">
       <div className="min-h-screen py-12 px-4 md:px-8 flex justify-center">
         <div className="w-full max-w-4xl bg-[#11121c] border border-white/10 p-6 md:p-10 rounded-3xl relative shadow-2xl">
-          
+
           <button onClick={fecharFormulario} className="absolute top-6 right-6 text-white/40 hover:text-white flex items-center gap-2 transition-colors">✕ Cancelar</button>
 
+          {/* HEADER */}
           <div className="text-center mb-12 mt-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-2 font-sora">Ativar <span className="text-[#00E599]">7 Dias Grátis</span></h2>
-            <p className="text-white/60 text-lg">Plano <span className="text-[#00E599] font-bold uppercase">{planoSelecionado}</span> • Preencha os dados completos para criarmos a sua estrutura.</p>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#00E599]/10 border border-[#00E599]/20 text-[#00E599] text-xs font-bold uppercase tracking-widest mb-4">
+              🎁 Sem cobrança hoje
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-2 font-sora">
+              Ativar <span className="text-[#00E599]">7 Dias Grátis</span>
+            </h2>
+            <p className="text-white/60 text-lg">
+              Plano <span className="text-[#00E599] font-bold uppercase">{planoSelecionado}</span> • Preencha os dados para criarmos a sua estrutura.
+            </p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-10">
-            
+
+            {/* SEÇÃO 1 — RESPONSÁVEL */}
             <div className="space-y-6">
               <h3 className="text-xl text-white font-bold border-b border-white/10 pb-4 flex items-center gap-2">
-                <span className="bg-[#00E599] text-black w-6 h-6 rounded-full flex items-center justify-center text-xs">1</span>
+                <span className="bg-[#00E599] text-black w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold">1</span>
                 Dados do Responsável
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -189,26 +197,27 @@ export default function CheckoutForm({ planoSelecionado, fecharFormulario }) {
               </div>
             </div>
 
+            {/* SEÇÃO 2 — EMPRESA */}
             <div className="space-y-6">
               <h3 className="text-xl text-white font-bold border-b border-white/10 pb-4 flex items-center gap-2">
-                <span className="bg-[#00E599] text-black w-6 h-6 rounded-full flex items-center justify-center text-xs">2</span>
+                <span className="bg-[#00E599] text-black w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold">2</span>
                 Dados da Empresa
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-6 gap-6">
                 <div className="md:col-span-3"><label className="label-text">Razão Social</label><input required name="razaoSocial" type="text" className="input-field" onChange={handleChange} /></div>
                 <div className="md:col-span-3"><label className="label-text">Nome Fantasia</label><input required name="nomeFantasia" type="text" className="input-field" onChange={handleChange} /></div>
-                
+
                 <div className="md:col-span-2 relative">
                   <label className="label-text flex justify-between">
                     CPF ou CNPJ {erros.cpfCnpj && <span className="text-red-500 text-[10px] font-bold">Inválido!</span>}
                   </label>
-                  <input required name="cpfCnpj" type="text" className={`input-field pr-10 ${erros.cpfCnpj ? 'border-red-500 bg-red-500/5' : ''}`} onChange={handleChange} onBlur={validarDocumento} placeholder="Apenas números"/>
+                  <input required name="cpfCnpj" type="text" className={`input-field pr-10 ${erros.cpfCnpj ? 'border-red-500 bg-red-500/5' : ''}`} onChange={handleChange} onBlur={validarDocumento} placeholder="Apenas números" />
                   {erros.cpfCnpj && <div className="absolute right-3 top-[34px] text-red-500 font-bold select-none">❌</div>}
                 </div>
 
                 <div className="md:col-span-2"><label className="label-text">Ramo</label><input required name="ramo" type="text" className="input-field" onChange={handleChange} /></div>
                 <div className="md:col-span-2"><label className="label-text">Qtd. Profissionais</label><input required name="qtdProfissionais" type="number" className="input-field" onChange={handleChange} /></div>
-                
+
                 <div className="md:col-span-6">
                   <label className="label-text">Link de Avaliação do Google Meu Negócio (Opcional)</label>
                   <input name="linkGoogle" type="url" className="input-field" placeholder="Ex: https://g.page/r/sua-empresa/review" onChange={handleChange} />
@@ -224,9 +233,10 @@ export default function CheckoutForm({ planoSelecionado, fecharFormulario }) {
               </div>
             </div>
 
+            {/* SEÇÃO 3 — FUNCIONAMENTO */}
             <div className="space-y-6">
               <h3 className="text-xl text-white font-bold border-b border-white/10 pb-4 flex items-center gap-2">
-                <span className="bg-[#00E599] text-black w-6 h-6 rounded-full flex items-center justify-center text-xs">3</span>
+                <span className="bg-[#00E599] text-black w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold">3</span>
                 Funcionamento
               </h3>
               <div className="space-y-6">
@@ -245,9 +255,10 @@ export default function CheckoutForm({ planoSelecionado, fecharFormulario }) {
               </div>
             </div>
 
+            {/* SEÇÃO 4 — BOT */}
             <div className="space-y-6">
               <h3 className="text-xl text-white font-bold border-b border-white/10 pb-4 flex items-center gap-2">
-                <span className="bg-[#00E599] text-black w-6 h-6 rounded-full flex items-center justify-center text-xs">4</span>
+                <span className="bg-[#00E599] text-black w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold">4</span>
                 Sua Recepcionista Virtual
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -263,46 +274,15 @@ export default function CheckoutForm({ planoSelecionado, fecharFormulario }) {
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-[#00E599]/5 to-transparent p-6 md:p-8 rounded-2xl border border-[#00E599]/20">
-              
-              {/* BLOCO EXPLICATIVO DO TESTE GRÁTIS */}
-              <div className="md:col-span-2 mb-6 bg-[#00E599]/10 border border-[#00E599]/30 p-4 rounded-xl">
-                <p className="text-sm text-[#00E599] font-bold flex items-center gap-2">
-                  🎁 Como funciona o Teste Grátis?
-                </p>
-                <p className="text-xs text-white/70 mt-1">
-                  O valor abaixo é referente <strong>apenas à taxa única de implantação</strong> (onde nossa equipe vai montar e configurar toda a sua IA). A sua 1ª mensalidade do sistema <strong>só será cobrada daqui a 7 dias</strong>, caso você decida continuar.
-                </p>
-              </div>
+            {/* TERMOS + SUBMIT */}
+            <div className="space-y-4">
+              <label className={`flex items-start gap-4 p-5 rounded-xl cursor-pointer border transition-all ${termosAceitos ? 'bg-[#00E599]/10 border-[#00E599]/30' : 'bg-black/20 border-white/10'}`}>
+                <input type="checkbox" className="mt-1" checked={termosAceitos} onChange={(e) => setTermosAceitos(e.target.checked)} />
+                <span className="text-sm text-gray-400">Li e concordo com os <a href="#/termos" target="_blank" className="text-[#00E599] font-bold underline">Termos e Condições de Uso</a> da Luni IA.</span>
+              </label>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                <div>
-                  <label className="label-text">Forma de Pagamento (Da Implantação)</label>
-                  <select name="formaPagamento" className="input-field" onChange={handleChange} value={dados.formaPagamento}>
-                    <option value="PIX">Pix (Liberação Imediata)</option>
-                    <option value="CREDIT_CARD">Cartão de Crédito</option>
-                    <option value="BOLETO">Boleto Bancário</option>
-                  </select>
-                </div>
-                {dados.formaPagamento === 'CREDIT_CARD' && (
-                  <div>
-                    <label className="label-text">Parcelamento</label>
-                    <select name="parcelas" className="input-field" onChange={handleChange}>
-                      {[...Array(10)].map((_, i) => <option key={i+1} value={i+1}>{i+1}x</option>)}
-                    </select>
-                  </div>
-                )}
-              </div>
-
-              <div className="mb-6">
-                <label className={`flex items-start gap-4 p-5 rounded-xl cursor-pointer border transition-all ${termosAceitos ? 'bg-[#00E599]/10 border-[#00E599]/30' : 'bg-black/20 border-white/10'}`}>
-                  <input type="checkbox" className="mt-1" checked={termosAceitos} onChange={(e) => setTermosAceitos(e.target.checked)} />
-                  <span className="text-sm text-gray-400">Li e concordo com os <a href="#/termos" target="_blank" className="text-[#00E599] font-bold underline">Termos e Condições de Uso</a> da Luni IA.</span>
-                </label>
-              </div>
-
-              <button type="submit" disabled={loading} className="w-full bg-[#00E599] hover:bg-[#00E599]/90 text-black font-extrabold py-5 text-lg rounded-xl transition-all uppercase tracking-wider">
-                {loading ? 'Montando sua estrutura...' : 'Pagar Implantação e Iniciar Teste Grátis 🚀'}
+              <button type="submit" disabled={loading} className="w-full bg-[#00E599] hover:bg-[#00E599]/90 text-black font-extrabold py-5 text-lg rounded-xl transition-all uppercase tracking-wider disabled:opacity-60 disabled:cursor-not-allowed">
+                {loading ? 'Montando sua estrutura...' : 'Começar Meu Teste Grátis 🚀'}
               </button>
             </div>
 

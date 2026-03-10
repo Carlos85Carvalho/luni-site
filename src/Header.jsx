@@ -5,10 +5,10 @@ import { Menu, X } from 'lucide-react';
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // --- NOVA FUNÇÃO PARA O WHATSAPP ---
+  // --- NOVA FUNÇÃO PARA O WHATSAPP (TESTAR A IA) ---
   const openWhatsApp = () => {
-    const phoneNumber = "5521976675302"; // Número atualizado
-    const message = encodeURIComponent("Olá! Vim pelo site e gostaria de testar a Luni.");
+    const phoneNumber = "5521976675302"; // Seu número
+    const message = encodeURIComponent("Olá! Estou no site da Luni e quero testar como a Inteligência Artificial funciona na prática! 🤖");
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
   };
 
@@ -48,7 +48,6 @@ export default function Header() {
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           
-          {/* --- LADO ESQUERDO --- */}
           <div className="flex items-center w-10">
             <button 
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -58,7 +57,6 @@ export default function Header() {
             </button>
           </div>
           
-          {/* --- CENTRO (Menu Desktop) --- */}
           <nav className="hidden md:flex items-center gap-8 lg:gap-12">
             {navLinks.map((link) => (
               <a 
@@ -72,9 +70,7 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* --- LADO DIREITO --- */}
           <div className="flex items-center justify-end w-auto md:w-auto">
-            {/* BOTÃO AGORA CHAMA O ZAP */}
             <button 
               onClick={openWhatsApp} 
               className="bg-primary-brand hover:bg-[#6A42DC] px-5 py-2 md:px-8 md:py-3 rounded-full text-white text-[10px] md:text-xs font-bold tracking-widest uppercase transition-all shadow-lg shadow-primary-brand/20 active:scale-95"
@@ -86,7 +82,6 @@ export default function Header() {
         </div>
       </motion.header>
 
-      {/* MENU MOBILE EXPANSÍVEL */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -106,12 +101,8 @@ export default function Header() {
                   {link.name}
                 </a>
               ))}
-              
               <div className="w-12 h-[1px] bg-white/10 my-4" />
-              
-              <p className="text-white/40 text-xs uppercase tracking-widest">
-                Luni Infraestrutura
-              </p>
+              <p className="text-white/40 text-xs uppercase tracking-widest">Luni Infraestrutura</p>
             </nav>
           </motion.div>
         )}
